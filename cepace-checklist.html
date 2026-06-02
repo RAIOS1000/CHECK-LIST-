@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1B3A6B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CEPACE">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<title>CEPACE — Checklist Diário</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1B3A6B;--navy-dark:#0F2447;--amber:#F59E0B;--amber-l:#FEF3C7;--amber-t:#92400E;
+  --green:#16A34A;--green-l:#F0FDF4;--green-t:#14532D;
+  --red:#DC2626;--red-l:#FEF2F2;--red-t:#7F1D1D;
+  --blue:#2E5FA3;--blue-l:#EEF3FB;--blue-t:#1B3A6B;
+  --wa:#25D366;--wa-dk:#128C7E;--wa-l:#E8F9F0;--wa-ll:#F0FDF7;
+  --g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g300:#CBD5E1;
+  --g400:#94A3B8;--g500:#64748B;--g700:#334155;--g800:#1E293B;
+  --surface:#fff;--bg:#F1F5F9;--r:10px;--rsm:6px;--rlg:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overscroll-behavior:none}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--g800)}
+.app{display:flex;flex-direction:column;height:100dvh;max-width:480px;margin:0 auto;position:relative;overflow:hidden}
+
+/* HEADER */
+.hdr{background:var(--navy-dark);padding-top:env(safe-area-inset-top,0);flex-shrink:0;z-index:10}
+.hdr-inner{padding:14px 18px 12px;display:flex;align-items:center;justify-content:space-between}
+.hdr-brand{display:flex;align-items:center;gap:10px}
+.hdr-icon{width:34px;height:34px;border-radius:9px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.hdr-title{color:#fff;font-size:15px;font-weight:600;letter-spacing:-.2px}
+.hdr-sub{color:rgba(255,255,255,.45);font-size:11px;margin-top:1px}
+.hdr-chip{font-family:'DM Mono',monospace;color:var(--amber);font-size:11px;font-weight:500;background:rgba(245,158,11,.12);border-radius:6px;padding:5px 9px;border:1px solid rgba(245,158,11,.2);white-space:nowrap}
+.back-hdr{display:flex;align-items:center;gap:10px;padding:12px 18px}
+.back-btn{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.proc-tag{font-family:'DM Mono',monospace;color:rgba(255,255,255,.85);font-size:12px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.remind-btn-hdr{padding:6px 10px;border-radius:6px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);color:var(--amber);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.cl-prog{padding:8px 18px 12px}
+.cl-prog-row{display:flex;justify-content:space-between;margin-bottom:5px}
+.cl-prog-lbl{color:rgba(255,255,255,.5);font-size:11px}
+.cl-prog-pct{color:var(--amber);font-size:11px;font-family:'DM Mono',monospace}
+.cl-track{height:3px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.cl-fill{height:3px;background:var(--amber);border-radius:3px;transition:width .3s}
+
+/* BOTTOM NAV */
+.bnav{display:flex;background:var(--surface);border-top:1px solid var(--g200);padding-bottom:env(safe-area-inset-bottom,0);flex-shrink:0}
+.nav-it{flex:1;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;user-select:none;color:var(--g400);font-size:10px;font-weight:500;transition:color .2s;position:relative}
+.nav-it.active{color:var(--navy)}
+.nav-ico{font-size:20px;line-height:1}
+.rdot{position:absolute;top:8px;right:calc(50% - 14px);width:7px;height:7px;border-radius:50%;background:var(--red);border:1.5px solid var(--surface)}
+
+.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 14px 16px}
+
+/* CARD + ITEM */
+.card{background:var(--surface);border-radius:var(--r);border:1px solid var(--g200)}
+.sec{margin-bottom:16px}
+.sec-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g500);padding:0 2px;margin-bottom:6px}
+.item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;cursor:pointer;border-bottom:1px solid var(--g100);transition:background .15s;user-select:none}
+.item:last-child{border-bottom:none}
+.item:active{background:var(--g50)}
+.item.done{background:#FAFFFE}
+.cb{width:20px;height:20px;border-radius:5px;flex-shrink:0;margin-top:1px;border:1.5px solid var(--g300);display:flex;align-items:center;justify-content:center;transition:all .2s;background:#fff}
+.item.done .cb{background:var(--green);border-color:var(--green)}
+.cb::after{display:none}
+.item.done .cb::after{display:block;content:'';width:5px;height:9px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(42deg) translateY(-1px)}
+.item-body{flex:1;min-width:0}
+.item-txt{font-size:13px;color:var(--g800);line-height:1.45;font-weight:500}
+.item.done .item-txt{color:var(--g400);text-decoration:line-through}
+.item-sub{font-size:11px;color:var(--g500);margin-top:3px;line-height:1.4}
+.item.done .item-sub{color:var(--g300)}
+.bdg{display:inline-block;font-size:9px;font-weight:600;padding:2px 6px;border-radius:20px;margin-left:5px;vertical-align:middle;text-transform:uppercase;letter-spacing:.04em}
+.b-red{background:var(--red-l);color:var(--red)}
+.b-amber{background:var(--amber-l);color:var(--amber-t)}
+.b-blue{background:var(--blue-l);color:var(--blue-t)}
+
+/* PROCESS CARDS */
+.proc-card{background:var(--surface);border-radius:var(--r);border:1px solid var(--g200);padding:13px 14px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:border-color .15s}
+.proc-card:active{background:var(--g50)}
+.proc-card.done-full{border-left:3px solid var(--green)}
+.proc-num{font-family:'DM Mono',monospace;font-size:12px;color:var(--navy);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.proc-bar-bg{flex:1;height:4px;background:var(--g200);border-radius:4px;overflow:hidden}
+.proc-bar-fill{height:4px;border-radius:4px;transition:width .3s}
+.proc-pct{font-size:10px;font-family:'DM Mono',monospace;color:var(--g500)}
+.rdot-sm{width:7px;height:7px;border-radius:50%;background:var(--amber);flex-shrink:0}
+.del-btn{padding:4px 8px;border-radius:5px;border:1px solid var(--g200);background:#fff;color:var(--g400);font-size:13px;cursor:pointer;flex-shrink:0}
+.del-btn:active{background:var(--red-l);color:var(--red);border-color:var(--red)}
+.btn-add{width:100%;padding:13px;border-radius:var(--r);border:1.5px dashed var(--g300);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--navy);cursor:pointer;text-align:center;transition:all .2s;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-add:active{background:var(--g50);border-style:solid}
+
+/* DAY STATS */
+.day-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px}
+.stat-card{background:var(--surface);border-radius:var(--rsm);border:1px solid var(--g200);padding:10px 12px;text-align:center}
+.stat-n{font-size:22px;font-weight:600;font-family:'DM Mono',monospace;color:var(--navy)}
+.stat-l{font-size:10px;color:var(--g500);margin-top:2px}
+
+/* ★ REMINDER BANNER — redesenhado para WhatsApp em destaque */
+.rem-card{border-radius:var(--r);margin-bottom:12px;overflow:hidden;border:1.5px solid var(--wa);box-shadow:0 2px 12px rgba(37,211,102,.15)}
+.rem-card-head{background:var(--wa-l);padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
+.rem-card-ico{font-size:22px;flex-shrink:0;line-height:1;margin-top:1px}
+.rem-card-body{flex:1;min-width:0}
+.rem-card-num{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--wa-dk);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rem-card-note{font-size:12px;color:var(--wa-dk);margin-top:3px;opacity:.85}
+.rem-card-date{font-size:11px;color:var(--wa-dk);margin-top:2px;opacity:.65}
+.rem-card-phone{font-size:11px;color:var(--wa-dk);margin-top:2px;font-family:'DM Mono',monospace;opacity:.7}
+.rem-x{background:none;border:none;font-size:18px;color:var(--wa-dk);opacity:.5;cursor:pointer;padding:0;flex-shrink:0;line-height:1}
+
+/* WhatsApp CTA button — large, unmissable */
+.btn-wa-cta{width:100%;padding:14px 16px;background:var(--wa);border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .15s;letter-spacing:-.1px}
+.btn-wa-cta:active{background:var(--wa-dk)}
+.btn-wa-cta-sub{font-size:11px;font-weight:400;opacity:.85;margin-top:1px}
+.btn-open-proc{width:100%;padding:10px;background:var(--g100);border:none;border-top:1px solid rgba(37,211,102,.2);color:var(--g700);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:background .15s}
+.btn-open-proc:active{background:var(--g200)}
+
+/* NOTIF PERMISSION CARD */
+.notif-card{background:var(--amber-l);border:1px solid var(--amber);border-radius:var(--r);padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.notif-card-txt{flex:1;font-size:12px;color:var(--amber-t);line-height:1.5}
+.btn-enable-notif{background:var(--amber);border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:8px 14px;border-radius:6px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(15,36,71,.55);z-index:100;display:flex;align-items:flex-end;justify-content:center}
+.modal{background:var(--surface);border-radius:var(--rlg) var(--rlg) 0 0;width:100%;max-width:480px;padding:20px 20px calc(env(safe-area-inset-bottom,0) + 20px);max-height:92dvh;overflow-y:auto}
+.modal-handle{width:36px;height:4px;background:var(--g200);border-radius:2px;margin:0 auto 20px}
+.modal-title{font-size:16px;font-weight:600;color:var(--g800);margin-bottom:16px}
+.form-g{margin-bottom:14px}
+.form-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--g500);margin-bottom:6px;display:block}
+.form-in{width:100%;padding:11px 13px;border-radius:var(--rsm);border:1px solid var(--g200);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--g800);background:var(--surface);outline:none;transition:border-color .2s;-webkit-appearance:none}
+.form-in:focus{border-color:var(--navy)}
+.mono-in{font-family:'DM Mono',monospace;font-size:13px}
+.form-hint{font-size:11px;color:var(--g400);margin-top:4px;line-height:1.5}
+
+/* Phone row */
+.phone-row{display:flex;align-items:center;border:1px solid var(--g200);border-radius:var(--rsm);overflow:hidden;transition:border-color .2s}
+.phone-row:focus-within{border-color:var(--navy)}
+.phone-prefix{background:var(--g100);padding:11px 10px;font-size:13px;color:var(--g500);font-family:'DM Mono',monospace;border-right:1px solid var(--g200);white-space:nowrap;flex-shrink:0}
+.phone-in{flex:1;padding:11px 12px;border:none;outline:none;font-family:'DM Mono',monospace;font-size:14px;color:var(--g800);background:transparent}
+
+/* WhatsApp preview */
+.wa-preview{background:var(--wa-ll);border:1px solid rgba(37,211,102,.25);border-radius:var(--rsm);padding:12px 13px;margin-top:14px}
+.wa-preview-hdr{display:flex;align-items:center;gap:6px;margin-bottom:8px;font-size:11px;font-weight:600;color:var(--wa-dk)}
+.wa-preview-bubble{background:#fff;border-radius:8px 8px 8px 2px;padding:10px 12px;border:1px solid rgba(37,211,102,.15);font-size:12px;color:var(--g800);line-height:1.6;white-space:pre-line}
+
+/* ★ NOTIF EXPLANATION BOX (shown after permission granted) */
+.notif-ok-card{background:var(--wa-l);border:1px solid rgba(37,211,102,.3);border-radius:var(--r);padding:12px 14px;margin-top:14px}
+.notif-ok-title{font-size:12px;font-weight:600;color:var(--wa-dk);margin-bottom:4px}
+.notif-ok-steps{list-style:none;padding:0}
+.notif-ok-steps li{font-size:11px;color:var(--wa-dk);padding:3px 0;opacity:.85;display:flex;align-items:flex-start;gap:6px}
+
+.btn-row{display:flex;gap:10px;margin-top:16px}
+.btn-row .btn{flex:1}
+.btn{padding:12px 20px;border-radius:var(--rsm);border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;width:100%;text-align:center;transition:all .15s}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:active{background:var(--navy-dark)}
+.btn-secondary{background:var(--g100);color:var(--g700)}
+.btn-danger{background:var(--red-l);color:var(--red)}
+
+/* CHART */
+.chart-wrap{background:var(--surface);border-radius:var(--r);border:1px solid var(--g200);padding:16px 12px 12px;margin-bottom:16px}
+.chart-ttl{font-size:12px;font-weight:600;color:var(--g500);margin-bottom:12px}
+.legend{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--g500)}
+.leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.hist-g{margin-bottom:20px}
+.hist-date-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--g500);margin-bottom:8px;padding:0 2px}
+.hist-card{background:var(--surface);border-radius:var(--r);border:1px solid var(--g200);padding:12px 14px;margin-bottom:6px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.hist-card:active{background:var(--g50)}
+.hist-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--navy);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hist-pct{font-family:'DM Mono',monospace;font-size:14px;font-weight:500}
+.al-card{border-radius:var(--r);padding:12px 14px;margin-bottom:10px;border-left:4px solid}
+.al-card.warn{background:var(--amber-l);border-color:var(--amber)}
+.al-card.danger{background:var(--red-l);border-color:var(--red)}
+.al-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.al-card.warn .al-title{color:var(--amber-t)}
+.al-card.danger .al-title{color:var(--red)}
+.al-txt{font-size:12px;line-height:1.5}
+.al-card.warn .al-txt{color:var(--amber-t)}
+.al-card.danger .al-txt{color:var(--red-t)}
+.toast{position:fixed;bottom:calc(env(safe-area-inset-bottom,0) + 72px);left:50%;transform:translateX(-50%) translateY(12px);background:var(--g800);color:#fff;font-size:13px;font-weight:500;padding:10px 18px;border-radius:20px;opacity:0;transition:all .25s;pointer-events:none;white-space:nowrap;z-index:999}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.empty{text-align:center;padding:40px 20px;color:var(--g400)}
+.empty-ico{font-size:36px;margin-bottom:10px}
+.empty-txt{font-size:14px;line-height:1.6}
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<div class="toast" id="toast"></div>
+<script>
+const SECTIONS=[
+  {label:"Ao receber o processo",items:[
+    {id:"a1",text:"Ler a decisão do magistrado",sub:"Identificar exatamente as providências determinadas antes de qualquer ato"},
+    {id:"a2",text:"Verificar gratuidade da justiça",sub:"Certificar nos autos se deferida"},
+    {id:"a3",text:"Verificar audiência marcada no sistema",sub:"Checar PROJUDI e SAPJUD"},
+  ]},
+  {label:"Fluxo de citação",items:[
+    {id:"b1",text:"Tentar citação via WhatsApp",sub:"Prioridade sempre — salvo decisão expressa do magistrado indeferindo",badge:"prioritário",bc:"b-blue"},
+    {id:"b2",text:"Registrar data + horário da citação WhatsApp",sub:"PART + LA obrigatórios"},
+    {id:"b3",text:"Se WhatsApp não efetivado: expedir carta ou mandado no PROJUDI",sub:"Conforme determinação da decisão"},
+    {id:"b4",text:"Carta e WhatsApp podem ser expedidos simultaneamente",sub:"Mesmo que já haja mandado ou carta expedidos",badge:"lembrete",bc:"b-amber"},
+    {id:"b5",text:"Citação não efetivada: intimar para novos dados",sub:"Prazo de 24h quando audiência estiver próxima"},
+  ]},
+  {label:"Audiência próxima",items:[
+    {id:"c1",text:"Intimar parte com prazo de 24h para novos dados",sub:"Acompanhar resposta após a intimação",badge:"urgente",bc:"b-red"},
+    {id:"c2",text:"Sem manifestação: registrar citação frustrada",sub:"Audiência pode ser cancelada"},
+    {id:"c3",text:"Com novos dados: solicitar cancelamento e reagendamento",sub:"Contatar equipe de pauta imediatamente"},
+  ]},
+  {label:"Cancelamento — regras",items:[
+    {id:"d1",text:"Carta/mandado expedido: cancelar só após retorno",sub:"E apenas 1 dia antes da audiência",badge:"atenção",bc:"b-amber"},
+    {id:"d2",text:"Carta precatória: NUNCA cancelar por ausência de retorno",sub:"Manter em pauta obrigatoriamente",badge:"crítico",bc:"b-red"},
+    {id:"d3",text:"Mandado + WhatsApp: Oficial de Justiça realiza cumprimento",sub:"Inclusive por WhatsApp quando determinado pelo magistrado"},
+    {id:"d4",text:"Audiência em menos de 20 dias sem citação: reagendar + SAPJUD",sub:"Enviar para equipe de reagendamento de audiência e lançar pendência no SAPJUD",badge:"urgente",bc:"b-red"},
+  ]},
+  {label:"Defensoria Pública (quando aplicável)",items:[
+    {id:"e1",text:"Intimação pessoal pelo sistema",sub:"Ato obrigatório — 1 de 2",badge:"obrigatório",bc:"b-red"},
+    {id:"e2",text:"Intimação pessoal da parte",sub:"WhatsApp, AR ou Mandado — Ato obrigatório — 2 de 2",badge:"obrigatório",bc:"b-red"},
+  ]},
+  {label:"Registros de sistema",items:[
+    {id:"f1",text:"SAPJUD: cadastrar na hora, nunca acumular",sub:"Registro imediato de todos os atos"},
+    {id:"f2",text:"PROJUDI: não finalizar sem movimentação e certificação",sub:"Finalizar somente ao encerrar o processo"},
+  ]},
+];
+const ALL_IDS=[];SECTIONS.forEach(s=>s.items.forEach(it=>ALL_IDS.push(it.id)));
+const TOTAL=ALL_IDS.length;
+
+const ALERTS_DATA=[
+  {type:"danger",title:"⚠️ Nunca fazer",text:"Cancelar carta precatória por ausência de retorno. Manter SEMPRE em pauta."},
+  {type:"danger",title:"⚠️ Nunca fazer",text:"Finalizar processo no PROJUDI sem movimentação e certificação."},
+  {type:"danger",title:"⚠️ Nunca fazer",text:"Realizar ato sem ler a decisão do magistrado primeiro."},
+  {type:"warn",title:"📋 Defensoria Pública",text:"São obrigatórios 2 atos: (1) Intimação pessoal pelo sistema e (2) Intimação pessoal da parte — WhatsApp, AR ou Mandado."},
+  {type:"warn",title:"⏱ Audiência < 20 dias sem citação",text:"Enviar imediatamente para equipe de reagendamento + lançar pendência no SAPJUD."},
+  {type:"warn",title:"⏱ Prazos",text:"Citação próxima de audiência: prazo de 24h para novos dados. Cancelamento: apenas 1 dia antes."},
+  {type:"warn",title:"📱 WhatsApp — registro obrigatório",text:"Sempre registrar Data + Horário da citação via WhatsApp (PART + LA)."},
+];
+
+/* ── DATA ── */
+const DB='cepace_v2';
+function emptyChecklist(){const c={};ALL_IDS.forEach(id=>c[id]=false);return c}
+function load(){try{const r=localStorage.getItem(DB);if(r)return JSON.parse(r);}catch(e){}return{processes:[]}}
+function save(d){localStorage.setItem(DB,JSON.stringify(d))}
+function today(){return new Date().toISOString().slice(0,10)}
+function addProcess(num,note){
+  const d=load();
+  const p={id:'p_'+Date.now(),number:num.trim(),note:(note||'').trim(),date:today(),createdAt:new Date().toISOString(),checklist:emptyChecklist(),reminder:null};
+  d.processes.unshift(p);save(d);return p.id;
+}
+function getProc(id){return load().processes.find(p=>p.id===id)||null}
+function toggleItem(pid,iid){
+  const d=load();const p=d.processes.find(x=>x.id===pid);
+  if(!p)return;p.checklist[iid]=!p.checklist[iid];save(d);
+}
+function setReminder(pid,date,note,phone){
+  const d=load();const p=d.processes.find(x=>x.id===pid);
+  if(!p)return;
+  p.reminder=date?{date,note:(note||'').trim(),phone:(phone||'').trim(),dismissed:false}:null;
+  save(d);
+}
+function dismissRem(pid){const d=load();const p=d.processes.find(x=>x.id===pid);if(p&&p.reminder)p.reminder.dismissed=true;save(d)}
+function delProc(pid){const d=load();d.processes=d.processes.filter(p=>p.id!==pid);save(d)}
+function completion(cl){const done=Object.values(cl).filter(Boolean).length;return{done,total:TOTAL,pct:Math.round(done/TOTAL*100)}}
+function dueReminders(){const t=today();return load().processes.filter(p=>p.reminder&&!p.reminder.dismissed&&p.reminder.date<=t)}
+function fmtDate(ds){if(!ds)return'';const d=new Date(ds+'T12:00:00');return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit'})}
+function fmtDateLong(ds){if(!ds)return'';const d=new Date(ds+'T12:00:00');return d.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'short'})}
+function fmtProcNum(v){
+  const d=v.replace(/\D/g,'').slice(0,20);let r='';
+  if(d.length>0)r+=d.slice(0,7);if(d.length>7)r+='-'+d.slice(7,9);
+  if(d.length>9)r+='.'+d.slice(9,13);if(d.length>13)r+='.'+d.slice(13,14);
+  if(d.length>14)r+='.'+d.slice(14,16);if(d.length>16)r+='.'+d.slice(16,20);
+  return r;
+}
+function fmtPhone(v){
+  const d=v.replace(/\D/g,'').slice(0,11);
+  if(d.length<=2)return d;
+  if(d.length<=7)return`(${d.slice(0,2)}) ${d.slice(2)}`;
+  return`(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
+}
+function toWaNum(v){const d=v.replace(/\D/g,'');if(!d)return'';return d.startsWith('55')&&d.length>=12?d:'55'+d}
+function buildWaMsg(proc,rem){
+  return['🔔 *Lembrete CEPACE*','',`📋 *Processo:* ${proc.number}`,`📅 *Data:* ${fmtDate(rem.date)}`,
+    ...(rem.note?['','📝 '+rem.note]:[])].join('\n');
+}
+function waUrl(proc,rem){
+  const phone=toWaNum(rem.phone||'');
+  if(!phone)return null;
+  return`https://wa.me/${phone}?text=${encodeURIComponent(buildWaMsg(proc,rem))}`;
+}
+function openWhatsApp(pid){
+  const p=getProc(pid);if(!p||!p.reminder)return;
+  const url=waUrl(p,p.reminder);
+  if(!url){toast('Número não configurado — edite o lembrete');return}
+  window.open(url,'_blank');
+}
+
+/* ── STATE ── */
+let V={view:'home',pid:null,modal:null,fdate:null};
+function nav(view,params){V.view=view;V.pid=params?.pid||null;V.fdate=params?.fdate||null;render();const sc=document.getElementById('scroll-area');if(sc)sc.scrollTop=0}
+function openModal(m){V.modal=m;renderModal()}
+function closeModal(){V.modal=null;const e=document.getElementById('modal-bg');if(e)e.remove()}
+
+/* ── RENDER ── */
+function render(){document.getElementById('app').innerHTML=buildApp()}
+function buildApp(){
+  if(V.view==='checklist'&&V.pid)return buildChecklist();
+  return buildHeader()+`<div class="scroll" id="scroll-area">`+
+    (V.view==='home'?buildHome():'')+(V.view==='history'?buildHistory():'')+(V.view==='alerts'?buildAlerts():'')+
+    `</div>`+buildNav();
+}
+function buildHeader(){
+  const dt=new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit'});
+  return`<div class="hdr"><div class="hdr-inner"><div class="hdr-brand"><div class="hdr-icon">⚖️</div><div><div class="hdr-title">CEPACE</div><div class="hdr-sub">Checklist Operacional</div></div></div><div class="hdr-chip">${dt}</div></div></div>`;
+}
+function buildNav(){
+  const due=dueReminders().length;
+  return`<div class="bnav">
+    <div class="nav-it ${V.view==='home'?'active':''}" onclick="nav('home')"><div class="nav-ico">📋</div><span>Hoje</span></div>
+    <div class="nav-it ${V.view==='history'?'active':''}" onclick="nav('history')"><div class="nav-ico">📊</div><span>Histórico</span></div>
+    <div class="nav-it ${V.view==='alerts'?'active':''}" onclick="nav('alerts')"><div class="nav-ico">⚠️</div>${due>0?'<div class="rdot"></div>':''}<span>Alertas</span></div>
+  </div>`;
+}
+
+function buildHome(){
+  const d=load(),t=today();
+  const tProcs=d.processes.filter(p=>p.date===t);
+  const done=tProcs.filter(p=>completion(p.checklist).pct===100).length;
+  const due=dueReminders();
+  let h='';
+
+  // Notificação permission prompt
+  if('Notification'in window&&Notification.permission==='default'){
+    h+=`<div class="notif-card">
+      <div class="notif-card-txt">🔔 Ative as notificações para receber lembretes quando abrir o app</div>
+      <button class="btn-enable-notif" onclick="ativarNotificacoes()">Ativar</button>
+    </div>`;
+  }
+
+  // ★ BANNERS DE LEMBRETE VENCIDO — redesenhados com botão WhatsApp em destaque
+  due.forEach(p=>{
+    const rem=p.reminder;
+    const phone=toWaNum(rem.phone||'');
+    const hasPhone=!!phone;
+    h+=`<div class="rem-card">
+      <div class="rem-card-head">
+        <div class="rem-card-ico">🔔</div>
+        <div class="rem-card-body">
+          <div class="rem-card-num">${p.number}</div>
+          ${rem.note?`<div class="rem-card-note">${rem.note}</div>`:''}
+          <div class="rem-card-date">Lembrete: ${fmtDate(rem.date)}</div>
+          ${hasPhone?`<div class="rem-card-phone">📲 ${rem.phone}</div>`:''}
+        </div>
+        <button class="rem-x" onclick="event.stopPropagation();dismissAndRefresh('${p.id}')">✕</button>
+      </div>
+      ${hasPhone?`
+        <button class="btn-wa-cta" onclick="openWhatsApp('${p.id}')">
+          <span style="font-size:20px">📲</span>
+          <div>
+            <div>Enviar no WhatsApp</div>
+            <div class="btn-wa-cta-sub">Mensagem pronta — só confirmar o envio</div>
+          </div>
+        </button>`:''}
+      <button class="btn-open-proc" onclick="nav('checklist',{pid:'${p.id}'})">Abrir Processo →</button>
+    </div>`;
+  });
+
+  // Stats
+  if(tProcs.length>0){
+    const avg=Math.round(tProcs.reduce((a,p)=>a+completion(p.checklist).pct,0)/tProcs.length);
+    const col=avg>=80?'var(--green)':avg>=50?'var(--amber)':'var(--red)';
+    h+=`<div class="day-stats">
+      <div class="stat-card"><div class="stat-n">${tProcs.length}</div><div class="stat-l">Processos</div></div>
+      <div class="stat-card"><div class="stat-n" style="color:var(--green)">${done}</div><div class="stat-l">Concluídos</div></div>
+      <div class="stat-card"><div class="stat-n" style="color:${col}">${avg}%</div><div class="stat-l">Média</div></div>
+    </div>`;
+  }
+
+  h+=`<button class="btn-add" onclick="openModal('addProcess')">＋ Novo Processo</button>`;
+
+  if(!tProcs.length){
+    h+=`<div class="empty"><div class="empty-ico">📋</div><div class="empty-txt">Nenhum processo hoje ainda.<br>Toque em "+ Novo Processo" para iniciar.</div></div>`;
+  } else {
+    h+=`<div class="sec-lbl" style="padding:0 2px;margin-bottom:8px">Processos de hoje</div>`;
+    tProcs.forEach(p=>{
+      const{done:dn,pct}=completion(p.checklist);
+      const full=pct===100;
+      const barCol=full?'var(--green)':pct>50?'var(--amber)':'var(--blue)';
+      const pctCol=full?'var(--green)':pct>50?'var(--amber)':'var(--g400)';
+      const hasRem=p.reminder&&!p.reminder.dismissed;
+      h+=`<div class="proc-card ${full?'done-full':''}" onclick="nav('checklist',{pid:'${p.id}'})">
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="proc-num">${p.number}</div>
+            ${hasRem?`<div class="rdot-sm"></div>`:''}
+          </div>
+          ${p.note?`<div style="font-size:11px;color:var(--g500);margin-top:2px">${p.note}</div>`:''}
+          <div style="display:flex;align-items:center;gap:6px;margin-top:6px">
+            <div class="proc-bar-bg"><div class="proc-bar-fill" style="width:${pct}%;background:${barCol}"></div></div>
+            <div class="proc-pct">${dn}/${TOTAL}</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0">
+          <div style="font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:${pctCol}">${pct}%</div>
+          <button class="del-btn" onclick="event.stopPropagation();doDelete('${p.id}')">🗑</button>
+        </div>
+      </div>`;
+    });
+  }
+  return h;
+}
+
+function buildChecklist(){
+  const p=getProc(V.pid);if(!p)return buildApp();
+  const{done,pct}=completion(p.checklist);
+  const hasRem=p.reminder&&!p.reminder.dismissed;
+  const hasPhone=hasRem&&p.reminder.phone;
+  const dueNow=hasRem&&p.reminder.date<=today();
+
+  let h=`<div class="hdr">
+    <div class="back-hdr">
+      <button class="back-btn" onclick="nav('home')">←</button>
+      <div class="proc-tag">${p.number}</div>
+      <button class="remind-btn-hdr" onclick="openModal('setReminder')">${hasRem?'🔔 Lembrete':'＋ Lembrete'}</button>
+    </div>
+    <div class="cl-prog">
+      <div class="cl-prog-row"><span class="cl-prog-lbl" id="cl-lbl">${done} de ${TOTAL} itens</span><span class="cl-prog-pct" id="cl-pct">${pct}%</span></div>
+      <div class="cl-track"><div class="cl-fill" id="cl-fill" style="width:${pct}%"></div></div>
+    </div>
+  </div>
+  <div class="scroll" id="scroll-area">`;
+
+  if(p.note)h+=`<div style="background:var(--blue-l);border-radius:var(--r);padding:10px 13px;margin-bottom:14px;border:1px solid rgba(46,95,163,.2)"><div style="font-size:12px;color:var(--blue-t)">${p.note}</div></div>`;
+
+  // Reminder info inside checklist
+  if(hasRem){
+    if(dueNow&&hasPhone){
+      h+=`<div class="rem-card" style="margin-bottom:14px">
+        <div class="rem-card-head">
+          <div class="rem-card-ico">🔔</div>
+          <div class="rem-card-body">
+            <div style="font-size:12px;font-weight:600;color:var(--wa-dk)">Lembrete vencido — ${fmtDate(p.reminder.date)}</div>
+            ${p.reminder.note?`<div class="rem-card-note">${p.reminder.note}</div>`:''}
+            <div class="rem-card-phone">📲 ${p.reminder.phone}</div>
+          </div>
+        </div>
+        <button class="btn-wa-cta" style="font-size:13px;padding:12px" onclick="openWhatsApp('${p.id}')">
+          <span style="font-size:18px">📲</span> Enviar no WhatsApp — mensagem pronta
+        </button>
+      </div>`;
+    } else {
+      h+=`<div style="background:var(--amber-l);border:1px solid rgba(245,158,11,.3);border-radius:var(--r);padding:10px 13px;margin-bottom:14px;display:flex;align-items:center;gap:10px">
+        <span>⏰</span>
+        <div style="flex:1">
+          <div style="font-size:11px;font-weight:600;color:var(--amber-t)">Lembrete em ${fmtDate(p.reminder.date)}</div>
+          ${p.reminder.note?`<div style="font-size:11px;color:var(--amber-t);opacity:.8;margin-top:2px">${p.reminder.note}</div>`:''}
+          ${hasPhone?`<div style="font-size:11px;color:var(--amber-t);opacity:.7;margin-top:2px;font-family:'DM Mono',monospace">📲 ${p.reminder.phone}</div>`:''}
+        </div>
+      </div>`;
+    }
+  }
+
+  SECTIONS.forEach(sec=>{
+    h+=`<div class="sec"><div class="sec-lbl">${sec.label}</div><div class="card">`;
+    sec.items.forEach(it=>{
+      const isDone=p.checklist[it.id];
+      const bdg=it.badge?`<span class="bdg ${it.bc||'b-blue'}">${it.badge}</span>`:'';
+      h+=`<div class="item ${isDone?'done':''}" onclick="doToggle('${p.id}','${it.id}')">
+        <div class="cb"></div>
+        <div class="item-body"><div class="item-txt">${it.text}${bdg}</div>${it.sub?`<div class="item-sub">${it.sub}</div>`:''}</div>
+      </div>`;
+    });
+    h+=`</div></div>`;
+  });
+  if(pct===100)h+=`<div style="text-align:center;padding:24px 20px"><div style="font-size:32px">✅</div><div style="font-size:14px;font-weight:600;color:var(--green);margin-top:8px">Processo concluído!</div></div>`;
+  h+=`</div>`;
+  return h;
+}
+
+function buildHistory(){
+  const d=load();
+  const days=[];
+  for(let i=13;i>=0;i--){
+    const dt=new Date();dt.setDate(dt.getDate()-i);
+    const ds=dt.toISOString().slice(0,10);
+    const procs=d.processes.filter(p=>p.date===ds);
+    const cnt=procs.length;
+    const avg=cnt>0?Math.round(procs.reduce((a,p)=>a+completion(p.checklist).pct,0)/cnt):0;
+    days.push({ds,cnt,avg,dt});
+  }
+  const maxCnt=Math.max(1,...days.map(x=>x.cnt));
+  const CW=300,CH=72,BW=Math.floor(CW/14)-2;
+  let bars='';
+  days.forEach((day,i)=>{
+    const x=i*(CW/14)+(CW/14-BW)/2;
+    const bh=day.cnt>0?Math.max(8,Math.round(day.cnt/maxCnt*CH)):0;
+    const y=CH-bh;
+    const col=day.cnt===0?'#E2E8F0':day.avg>=80?'#16A34A':day.avg>=50?'#F59E0B':'#2E5FA3';
+    const isTd=day.ds===today();
+    const dimmed=V.fdate&&V.fdate!==day.ds;
+    bars+=`<rect x="${x}" y="${y}" width="${BW}" height="${Math.max(bh,1)}" rx="3" fill="${col}" opacity="${dimmed?.3:1}" style="cursor:pointer" onclick="filterHist('${day.ds}')" ${isTd?'stroke="#1B3A6B" stroke-width="1.5"':''}/>`;
+    if(i===0||i===13||isTd){const lbl=isTd?'hoje':day.dt.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});bars+=`<text x="${x+BW/2}" y="${CH+13}" text-anchor="middle" font-size="8" fill="#94A3B8" font-family="DM Sans,sans-serif">${lbl}</text>`;}
+    if(day.cnt>0)bars+=`<text x="${x+BW/2}" y="${y-3}" text-anchor="middle" font-size="8" fill="${col}" font-family="DM Mono,monospace">${day.cnt}</text>`;
+  });
+  let h=`<div class="chart-wrap">
+    <div class="chart-ttl">Processos — últimos 14 dias ${V.fdate?`· <b style="color:var(--navy)">${fmtDate(V.fdate)}</b> <span onclick="filterHist(null)" style="cursor:pointer;font-size:11px;color:var(--g400);font-weight:400">✕ limpar</span>`:''}</div>
+    <svg viewBox="0 0 ${CW} ${CH+18}" width="100%" style="overflow:visible">${bars}</svg>
+    <div class="legend">
+      <div class="leg-item"><div class="leg-dot" style="background:#16A34A"></div>≥80%</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#F59E0B"></div>50–79%</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#2E5FA3"></div>&lt;50%</div>
+      <div class="leg-item"><div class="leg-dot" style="background:#E2E8F0"></div>sem processos</div>
+    </div>
+  </div>`;
+  const all=d.processes.filter(p=>!V.fdate||p.date===V.fdate);
+  if(!all.length){h+=`<div class="empty"><div class="empty-ico">📊</div><div class="empty-txt">Nenhum processo registrado ainda.</div></div>`;}
+  else{
+    const byDate={};all.forEach(p=>{if(!byDate[p.date])byDate[p.date]=[];byDate[p.date].push(p)});
+    Object.keys(byDate).sort().reverse().forEach(ds=>{
+      const procs=byDate[ds];const lbl=ds===today()?'Hoje':fmtDateLong(ds);
+      h+=`<div class="hist-g"><div class="hist-date-lbl">${lbl}</div>`;
+      procs.forEach(p=>{
+        const{done:dn,pct}=completion(p.checklist);
+        const col=pct===100?'var(--green)':pct>50?'var(--amber)':'var(--g400)';
+        h+=`<div class="hist-card" onclick="nav('checklist',{pid:'${p.id}'})">
+          <div style="flex:1;min-width:0"><div class="hist-num">${p.number}</div>
+          <div style="font-size:11px;color:var(--g400);margin-top:2px">${dn}/${TOTAL} itens${p.note?' · '+p.note:''}</div></div>
+          <div class="hist-pct" style="color:${col}">${pct}%</div></div>`;
+      });
+      h+=`</div>`;
+    });
+  }
+  return h;
+}
+function buildAlerts(){return ALERTS_DATA.map(a=>`<div class="al-card ${a.type}"><div class="al-title">${a.title}</div><div class="al-txt">${a.text}</div></div>`).join('')}
+
+/* ── MODAL ── */
+function renderModal(){
+  const ex=document.getElementById('modal-bg');if(ex)ex.remove();if(!V.modal)return;
+  let inner='';
+
+  if(V.modal==='addProcess'){
+    inner=`<div class="modal-handle"></div>
+    <div class="modal-title">Novo Processo</div>
+    <div class="form-g"><label class="form-lbl">Número do Processo</label>
+      <input type="text" class="form-in mono-in" id="pnum" placeholder="0000000-00.0000.0.00.0000" inputmode="numeric" autocomplete="off" oninput="this.value=fmtProcNum(this.value)">
+    </div>
+    <div class="form-g"><label class="form-lbl">Observação (opcional)</label>
+      <input type="text" class="form-in" id="pnote" placeholder="Ex: Réu no exterior, via Latam...">
+    </div>
+    <div class="btn-row">
+      <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-primary" onclick="submitProc()">Iniciar Checklist →</button>
+    </div>`;
+  }
+
+  if(V.modal==='setReminder'){
+    const p=getProc(V.pid);
+    const hasR=p?.reminder&&!p.reminder.dismissed;
+    const tmr=new Date();tmr.setDate(tmr.getDate()+1);
+    const defDate=hasR?p.reminder.date:tmr.toISOString().slice(0,10);
+    const defNote=hasR?p.reminder.note:'';
+    const defPhone=hasR?p.reminder.phone:'';
+    const notifPerm='Notification'in window?Notification.permission:'denied';
+
+    inner=`<div class="modal-handle"></div>
+    <div class="modal-title">Definir Lembrete</div>
+    <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--g500);margin-bottom:14px">${p?.number||''}</div>
+    <div class="form-g"><label class="form-lbl">Data do Lembrete</label>
+      <input type="date" class="form-in" id="rdate" value="${defDate}" min="${today()}" onchange="updateWaPreview()">
+    </div>
+    <div class="form-g"><label class="form-lbl">Motivo / Observação</label>
+      <input type="text" class="form-in" id="rnote" placeholder="Ex: Verificar retorno do mandado..." value="${defNote}" oninput="updateWaPreview()">
+    </div>
+    <div class="form-g">
+      <label class="form-lbl">📲 Número WhatsApp para envio</label>
+      <div class="phone-row">
+        <div class="phone-prefix">+55</div>
+        <input type="tel" class="phone-in" id="rphone" placeholder="(62) 99999-9999" value="${defPhone}" inputmode="tel" autocomplete="tel" oninput="this.value=fmtPhone(this.value);updateWaPreview()">
+      </div>
+      <div class="form-hint">Na data do lembrete, ao abrir o app: um toque verde envia a mensagem diretamente no WhatsApp.</div>
+    </div>
+    <div id="wa-preview-area"></div>
+    ${notifPerm!=='granted'?`<div style="background:var(--amber-l);border:1px solid var(--amber);border-radius:var(--rsm);padding:10px 12px;margin-top:12px;font-size:11px;color:var(--amber-t)">
+      💡 Ative as notificações do app para ver o lembrete assim que abrir o celular
+    </div>`:''}
+    <div class="btn-row">
+      ${hasR?`<button class="btn btn-danger" onclick="removeRem()">Remover</button>`:`<button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>`}
+      <button class="btn btn-primary" onclick="submitRem()">Salvar Lembrete</button>
+    </div>`;
+  }
+
+  const bg=document.createElement('div');
+  bg.id='modal-bg';bg.className='modal-bg';
+  bg.innerHTML=`<div class="modal">${inner}</div>`;
+  bg.addEventListener('click',e=>{if(e.target===bg)closeModal()});
+  document.getElementById('app').appendChild(bg);
+  setTimeout(()=>{const i=bg.querySelector('input');if(i)i.focus();updateWaPreview();},100);
+}
+
+function updateWaPreview(){
+  const area=document.getElementById('wa-preview-area');if(!area)return;
+  const phone=document.getElementById('rphone')?.value||'';
+  const note=document.getElementById('rnote')?.value||'';
+  const date=document.getElementById('rdate')?.value||'';
+  const p=getProc(V.pid);if(!p||!phone.trim()){area.innerHTML='';return}
+  const fakeRem={date,note,phone};
+  const msg=buildWaMsg(p,fakeRem);
+  const preview=msg.replace(/\*(.*?)\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
+  area.innerHTML=`<div class="wa-preview">
+    <div class="wa-preview-hdr">📲 Prévia da mensagem</div>
+    <div class="wa-preview-bubble">${preview}</div>
+  </div>`;
+}
+
+/* ── ACTIONS ── */
+function doToggle(pid,iid){
+  toggleItem(pid,iid);
+  const p=getProc(pid);if(!p)return;
+  const el=document.querySelector(`.item[onclick="doToggle('${pid}','${iid}')"]`);
+  if(el)el.classList.toggle('done',p.checklist[iid]);
+  const{done,pct}=completion(p.checklist);
+  const f=document.getElementById('cl-fill');if(f)f.style.width=pct+'%';
+  const l=document.getElementById('cl-lbl');if(l)l.textContent=`${done} de ${TOTAL} itens`;
+  const c=document.getElementById('cl-pct');if(c)c.textContent=pct+'%';
+}
+function submitProc(){
+  const num=document.getElementById('pnum')?.value?.trim();
+  const note=document.getElementById('pnote')?.value?.trim();
+  if(!num){toast('Informe o número do processo');return}
+  const id=addProcess(num,note);closeModal();nav('checklist',{pid:id});
+}
+function submitRem(){
+  const date=document.getElementById('rdate')?.value;
+  const note=document.getElementById('rnote')?.value?.trim();
+  const phone=document.getElementById('rphone')?.value?.trim();
+  if(!date){toast('Selecione uma data');return}
+  setReminder(V.pid,date,note,phone);closeModal();
+  ativarNotificacoes();toast('Lembrete salvo ✓');
+  const rb=document.querySelector('.remind-btn-hdr');if(rb)rb.textContent='🔔 Lembrete';
+}
+function removeRem(){setReminder(V.pid,null,null,null);closeModal();toast('Lembrete removido')}
+function dismissAndRefresh(pid){dismissRem(pid);render()}
+function filterHist(date){V.fdate=date;nav('history')}
+function doDelete(pid){if(confirm('Remover este processo?')){delProc(pid);render();toast('Processo removido')}}
+
+/* ── ★ NOTIFICAÇÕES — com clique abrindo WhatsApp ── */
+async function ativarNotificacoes(){
+  if(!('Notification'in window))return;
+  if(Notification.permission==='default'){
+    const p=await Notification.requestPermission();
+    if(p==='granted'){render();fireNotifs();}
+  }
+}
+
+async function fireNotifs(){
+  if(!('Notification'in window)||Notification.permission!=='granted')return;
+  if(!('serviceWorker'in navigator))return;
+  let reg;
+  try{reg=await navigator.serviceWorker.ready;}catch(e){return}
+
+  const due=dueReminders();
+  for(const proc of due){
+    const rem=proc.reminder;
+    const phone=toWaNum(rem.phone||'');
+    const url=phone?`https://wa.me/${phone}?text=${encodeURIComponent(buildWaMsg(proc,rem))}`:null;
+
+    // Evitar duplicatas
+    const existing=await reg.getNotifications({tag:'rem-'+proc.id});
+    if(existing.length>0)continue;
+
+    const bodyLines=[proc.number];
+    if(rem.note)bodyLines.push(rem.note);
+    bodyLines.push(phone?'👆 Toque para enviar no WhatsApp →':'👆 Toque para abrir o processo');
+
+    await reg.showNotification('🔔 Lembrete — CEPACE',{
+      body:bodyLines.join('\n'),
+      icon:'./icons/icon-192.png',
+      badge:'./icons/icon-192.png',
+      tag:'rem-'+proc.id,
+      requireInteraction:true,  // fica visível até o usuário agir
+      silent:false,
+      vibrate:[200,100,200],
+      data:{waUrl:url,procId:proc.id},
+      actions: url
+        ?[{action:'whatsapp',title:'📲 Enviar WhatsApp'},{action:'dismiss',title:'✕ Dispensar'}]
+        :[{action:'open',title:'📋 Abrir Processo'},{action:'dismiss',title:'✕ Dispensar'}]
+    });
+  }
+}
+
+function toast(msg){
+  const t=document.getElementById('toast');if(!t)return;
+  t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+/* ── INIT ── */
+async function init(){
+  if('serviceWorker'in navigator){
+    await navigator.serviceWorker.register('./sw.js').catch(()=>{});
+  }
+  render();
+  // Pequeno delay para garantir que o SW está pronto
+  setTimeout(fireNotifs, 800);
+  // Verificar a cada minuto enquanto o app está aberto
+  setInterval(()=>{
+    fireNotifs();
+    const due=dueReminders();
+    const dot=document.querySelector('.rdot');
+    if(due.length>0&&!dot)render();
+  },60000);
+}
+
+init();
+</script>
+</body>
+</html>
