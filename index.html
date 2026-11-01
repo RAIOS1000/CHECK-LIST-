@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1B3A6B">
-<title>NOME DO PRODUTO — Oferta Especial</title>
-<meta name="description" content="Descrição curta do seu produto para aparecer no Google e nas redes sociais.">
+<meta name="theme-color" content="#0F2447">
+<title>Coleção Preparatória TJ-GO — Analista Judiciário (Apoio Judiciário e Administrativo)</title>
+<meta name="description" content="Método de Estudo de Alto Rendimento para o TJ-GO: 5 volumes teóricos, 1.500 questões comentadas, cronograma de 12 semanas e oficina discursiva. Banca UFG / Instituto Verbena.">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
    >>> EDITE AQUI: cole o link do seu checkout do Kiwify <<<
-   Troque o "#" abaixo pelo link que o Kiwify te deu.
-   Ex: https://pay.kiwify.com.br/XXXXXXX
+   Procure por href="#" nos botões COMPRAR e troque pelo link
+   que o Kiwify te deu. Ex: https://pay.kiwify.com.br/XXXXXXX
    ============================================================ */
 :root{
   --navy:#1B3A6B;--navy-dark:#0F2447;--amber:#F59E0B;--amber-d:#D97706;
@@ -25,60 +25,92 @@ html{scroll-behavior:smooth}
 body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--g800);line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-.btn-cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(180deg,var(--green) 0%,var(--green-d) 100%);color:#fff;font-size:18px;font-weight:700;padding:18px 34px;border-radius:var(--r);text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(22,163,74,.35);transition:transform .15s,box-shadow .15s;text-align:center}
+.btn-cta{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:linear-gradient(180deg,var(--green) 0%,var(--green-d) 100%);color:#fff;font-size:18px;font-weight:700;padding:18px 34px;border-radius:var(--r);text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(22,163,74,.35);transition:transform .15s,box-shadow .15s;text-align:center}
 .btn-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(22,163,74,.45)}
 .btn-cta:active{transform:translateY(0)}
-.btn-cta small{display:block;font-size:12px;font-weight:500;opacity:.85;margin-top:2px}
+.btn-cta small{display:block;font-size:12px;font-weight:500;opacity:.85}
 
 /* HERO */
-.hero{background:linear-gradient(160deg,var(--navy-dark) 0%,var(--navy) 100%);color:#fff;padding:70px 0 80px;text-align:center;position:relative;overflow:hidden}
+.hero{background:linear-gradient(160deg,var(--navy-dark) 0%,var(--navy) 100%);color:#fff;padding:64px 0 90px;text-align:center;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:60px;background:var(--bg);clip-path:polygon(0 100%,100% 100%,100% 0,50% 60%,0 0)}
-.badge{display:inline-block;background:rgba(245,158,11,.15);color:var(--amber);border:1px solid rgba(245,158,11,.35);font-size:13px;font-weight:600;padding:7px 16px;border-radius:30px;margin-bottom:22px;letter-spacing:.3px}
-.hero h1{font-size:clamp(28px,6vw,46px);font-weight:800;letter-spacing:-.5px;line-height:1.15;margin-bottom:18px}
+.badge{display:inline-block;background:rgba(245,158,11,.15);color:var(--amber);border:1px solid rgba(245,158,11,.35);font-size:12px;font-weight:700;padding:7px 16px;border-radius:30px;margin-bottom:22px;letter-spacing:.5px;text-transform:uppercase}
+.hero h1{font-size:clamp(27px,5.5vw,44px);font-weight:800;letter-spacing:-.5px;line-height:1.15;margin-bottom:18px;max-width:860px;margin-left:auto;margin-right:auto}
 .hero h1 span{color:var(--amber)}
-.hero p.sub{font-size:clamp(16px,2.5vw,20px);color:rgba(255,255,255,.8);max-width:640px;margin:0 auto 34px}
+.hero p.sub{font-size:clamp(15px,2.5vw,19px);color:rgba(255,255,255,.8);max-width:680px;margin:0 auto 30px}
 .hero .btn-cta{position:relative;z-index:2}
 .hero .reassure{margin-top:16px;font-size:13px;color:rgba(255,255,255,.6);position:relative;z-index:2}
+.hero-stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:30px auto 34px;max-width:720px}
+.hstat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:14px 20px;min-width:140px}
+.hstat b{display:block;font-size:26px;font-weight:800;color:var(--amber);letter-spacing:-.5px}
+.hstat span{font-size:12px;color:rgba(255,255,255,.7)}
 
 /* SECTIONS */
 section{padding:58px 0}
-.section-title{font-size:clamp(24px,4vw,34px);font-weight:800;color:var(--navy-dark);text-align:center;letter-spacing:-.5px;margin-bottom:12px}
-.section-sub{font-size:17px;color:var(--g500);text-align:center;max-width:620px;margin:0 auto 42px}
+.section-title{font-size:clamp(23px,4vw,33px);font-weight:800;color:var(--navy-dark);text-align:center;letter-spacing:-.5px;margin-bottom:12px}
+.section-sub{font-size:16px;color:var(--g500);text-align:center;max-width:680px;margin:0 auto 42px}
 
-/* BENEFITS */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.bcard{background:var(--surface);border:1px solid var(--g200);border-radius:var(--rlg);padding:28px 24px;transition:transform .2s,box-shadow .2s}
+/* MATEMÁTICA DA APROVAÇÃO */
+.math-box{max-width:760px;margin:0 auto;background:var(--surface);border:1px solid var(--g200);border-radius:var(--rlg);overflow:hidden}
+.math-row{display:flex;align-items:center;gap:16px;padding:16px 22px;border-bottom:1px solid var(--g100)}
+.math-row:last-child{border-bottom:none}
+.math-pct{flex-shrink:0;width:72px;font-size:21px;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums}
+.math-bar{flex:1;min-width:0}
+.math-bar b{display:block;font-size:14px;color:var(--g800);margin-bottom:6px}
+.math-track{height:8px;background:var(--g100);border-radius:8px;overflow:hidden}
+.math-fill{height:8px;border-radius:8px;background:linear-gradient(90deg,var(--amber),var(--amber-d))}
+.math-fill.blue{background:linear-gradient(90deg,var(--navy),#2E5FA3)}
+.math-alert{max-width:760px;margin:22px auto 0;background:#FEF3C7;border:1px solid rgba(245,158,11,.4);border-radius:var(--r);padding:18px 22px;font-size:15px;color:#92400E}
+.math-alert b{color:#78350F}
+
+/* BENEFITS / MÉTODO */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.bcard{background:var(--surface);border:1px solid var(--g200);border-radius:var(--rlg);padding:28px 24px;transition:transform .2s,box-shadow .2s;position:relative}
 .bcard:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(15,36,71,.08)}
 .bcard .ico{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--amber),var(--amber-d));display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px}
-.bcard h3{font-size:19px;font-weight:700;color:var(--navy-dark);margin-bottom:8px}
-.bcard p{font-size:15px;color:var(--g500)}
+.bcard h3{font-size:18px;font-weight:700;color:var(--navy-dark);margin-bottom:8px}
+.bcard p{font-size:14px;color:var(--g500)}
+.step-num{position:absolute;top:22px;right:22px;font-size:13px;font-weight:800;color:var(--g400);background:var(--g100);border-radius:8px;padding:4px 10px}
 
-/* INCLUDES / LISTA */
+/* INCLUDES */
 .includes{background:var(--navy-dark);color:#fff}
 .includes .section-title{color:#fff}
-.inc-list{max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.inc-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
 .inc-item{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:16px 20px}
 .inc-item .chk{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700}
 .inc-item div b{display:block;font-size:16px;margin-bottom:2px}
 .inc-item div span{font-size:14px;color:rgba(255,255,255,.65)}
+.inc-item.bonus{border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.08)}
+.inc-item.bonus .chk{background:var(--amber)}
+
+/* PARA QUEM É */
+.who{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.who-col{background:var(--surface);border:1px solid var(--g200);border-radius:var(--rlg);padding:26px 24px}
+.who-col h3{font-size:17px;font-weight:700;margin-bottom:14px;color:var(--navy-dark)}
+.who-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.who-col li{font-size:14px;color:var(--g700);padding-left:26px;position:relative}
+.who-col li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.who-col.no li::before{content:"✕";color:#DC2626}
 
 /* PRICE */
 .price-sec{text-align:center}
-.price-box{max-width:460px;margin:0 auto;background:var(--surface);border:2px solid var(--amber);border-radius:var(--rlg);padding:40px 30px;box-shadow:0 20px 50px rgba(245,158,11,.15);position:relative}
+.price-box{max-width:480px;margin:0 auto;background:var(--surface);border:2px solid var(--amber);border-radius:var(--rlg);padding:40px 30px;box-shadow:0 20px 50px rgba(245,158,11,.15);position:relative}
 .price-box .tag{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--amber);color:#fff;font-size:13px;font-weight:700;padding:6px 20px;border-radius:30px;white-space:nowrap}
-.price-box .old{font-size:18px;color:var(--g400);text-decoration:line-through;margin-top:8px}
-.price-box .now{font-size:16px;color:var(--g500);margin-top:4px}
+.price-box .plist{text-align:left;margin:0 auto 22px;max-width:340px;display:flex;flex-direction:column;gap:8px}
+.price-box .plist div{font-size:14px;color:var(--g700)}
+.price-box .plist div::before{content:"✓ ";color:var(--green);font-weight:700}
+.price-box .old{font-size:17px;color:var(--g400);text-decoration:line-through;margin-top:6px}
+.price-box .now{font-size:15px;color:var(--g500);margin-top:4px}
 .price-box .big{font-size:52px;font-weight:800;color:var(--navy-dark);letter-spacing:-1px;line-height:1.1;margin:4px 0}
 .price-box .big span{font-size:22px;vertical-align:super;font-weight:600}
 .price-box .installments{font-size:15px;color:var(--g500);margin-bottom:26px}
 .price-box .btn-cta{width:100%}
-.price-box .secure{margin-top:16px;font-size:13px;color:var(--g400);display:flex;align-items:center;justify-content:center;gap:6px}
+.price-box .secure{margin-top:16px;font-size:13px;color:var(--g400)}
 
 /* GUARANTEE */
 .guarantee{display:flex;align-items:center;gap:24px;background:var(--green);color:#fff;border-radius:var(--rlg);padding:32px;max-width:720px;margin:0 auto;flex-wrap:wrap;justify-content:center;text-align:center}
 .guarantee .seal{font-size:64px;line-height:1}
 .guarantee h3{font-size:22px;font-weight:800;margin-bottom:6px}
-.guarantee p{font-size:15px;color:rgba(255,255,255,.9);max-width:420px}
+.guarantee p{font-size:15px;color:rgba(255,255,255,.9);max-width:440px}
 
 /* FAQ */
 .faq-item{background:var(--surface);border:1px solid var(--g200);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
@@ -95,7 +127,7 @@ footer .fbrand{color:#fff;font-weight:700;font-size:16px;margin-bottom:10px}
 
 /* FLOATING CTA (mobile) */
 .float-cta{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--g200);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0));box-shadow:0 -4px 20px rgba(0,0,0,.08);z-index:50;display:none}
-.float-cta .btn-cta{width:100%;padding:15px;font-size:16px}
+.float-cta .btn-cta{width:100%;padding:14px;font-size:16px}
 @media(max-width:600px){
   .float-cta{display:block}
   body{padding-bottom:84px}
@@ -108,35 +140,48 @@ footer .fbrand{color:#fff;font-weight:700;font-size:16px;margin-bottom:10px}
 <!-- ===================== HERO ===================== -->
 <header class="hero">
   <div class="wrap">
-    <span class="badge">🔥 OFERTA POR TEMPO LIMITADO</span>
-    <h1>O título que <span>vende</span> o seu produto<br>em uma frase de impacto</h1>
-    <p class="sub">Aqui vai a promessa principal: o que a pessoa vai conquistar ao comprar. Fale do resultado, não do produto.</p>
-    <a href="#comprar" class="btn-cta">QUERO GARANTIR O MEU <small>Acesso imediato · Compra 100% segura</small></a>
-    <p class="reassure">✔ Pagamento processado pela Kiwify · ✔ Garantia de 7 dias</p>
+    <span class="badge">⚖️ Concurso TJ-GO · Analista Judiciário · Banca UFG / Instituto Verbena</span>
+    <h1>O plano completo para a prova de <span>Apoio Judiciário e Administrativo</span> do TJ-GO em 12 semanas</h1>
+    <p class="sub">Pare de estudar no escuro. A <b>Coleção Preparatória de Alto Desempenho</b> entrega a teoria dos 5 volumes, 1.500 questões comentadas no estilo da banca e um cronograma semana a semana — tudo guiado pela <b>Regra 80/20 do edital</b>.</p>
+    <div class="hero-stats">
+      <div class="hstat"><b>5</b><span>volumes teóricos completos</span></div>
+      <div class="hstat"><b>1.500</b><span>questões comentadas</span></div>
+      <div class="hstat"><b>12</b><span>semanas de cronograma guiado</span></div>
+      <div class="hstat"><b>12</b><span>redações com espelho de correção</span></div>
+    </div>
+    <!-- >>> TROQUE O href="#comprar" se quiser levar direto ao Kiwify <<< -->
+    <a href="#comprar" class="btn-cta">QUERO MINHA VAGA NO TJ-GO <small>Acesso imediato · Compra 100% segura via Kiwify</small></a>
+    <p class="reassure">✔ Material fundamentado no Edital nº 02/2021 (UFG) · ✔ Legislação atualizada até 2026 · ✔ Garantia de 7 dias</p>
   </div>
 </header>
 
-<!-- ===================== BENEFÍCIOS ===================== -->
+<!-- ===================== A MATEMÁTICA DA APROVAÇÃO ===================== -->
 <section>
   <div class="wrap">
-    <h2 class="section-title">Por que você precisa disso</h2>
-    <p class="section-sub">Troque pelos 3 maiores benefícios do seu produto. Cada card = uma transformação.</p>
+    <h2 class="section-title">A matemática que reprova quem estuda “igualzinho”</h2>
+    <p class="section-sub">A maioria dos candidatos divide o tempo igualmente entre as 6 disciplinas. Erro grave: <b>80% dos pontos da Prova Objetiva estão concentrados nas 4 disciplinas de Peso 2</b>. Veja a distribuição oficial dos 100 pontos:</p>
+    <div class="math-box">
+      <div class="math-row"><div class="math-pct">36%</div><div class="math-bar"><b>Noções de Administração Pública</b><div class="math-track"><div class="math-fill" style="width:36%"></div></div></div></div>
+      <div class="math-row"><div class="math-pct">20%</div><div class="math-bar"><b>Legislação Complementar do TJ-GO</b><div class="math-track"><div class="math-fill" style="width:20%"></div></div></div></div>
+      <div class="math-row"><div class="math-pct">15%</div><div class="math-bar"><b>Língua Portuguesa e Redação Oficial</b><div class="math-track"><div class="math-fill blue" style="width:15%"></div></div></div></div>
+      <div class="math-row"><div class="math-pct">14%</div><div class="math-bar"><b>Noções de Direito Administrativo</b><div class="math-track"><div class="math-fill" style="width:14%"></div></div></div></div>
+      <div class="math-row"><div class="math-pct">10%</div><div class="math-bar"><b>Noções de Direito Constitucional</b><div class="math-track"><div class="math-fill" style="width:10%"></div></div></div></div>
+      <div class="math-row"><div class="math-pct">5%</div><div class="math-bar"><b>História e Geografia de Goiás</b><div class="math-track"><div class="math-fill blue" style="width:5%"></div></div></div></div>
+    </div>
+    <div class="math-alert">⚠️ <b>E tem mais:</b> a Prova Discursiva vale <b>50% da nota final</b> — e quase ninguém treina redação de 30 linhas no padrão UFG. A Coleção inclui a <b>Oficina Discursiva</b> com 4 temas modelo e espelhos de correção para você escrever 1 redação por semana.</div>
+  </div>
+</section>
+
+<!-- ===================== O MÉTODO EM 4 PASSOS ===================== -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2 class="section-title">O Método de Estudo em 4 Passos</h2>
+    <p class="section-sub">Engenharia reversa da banca UFG / Instituto Verbena, num ciclo semanal de 24 horas que cabe na rotina de quem trabalha.</p>
     <div class="grid">
-      <div class="bcard">
-        <div class="ico">🚀</div>
-        <h3>Benefício 1</h3>
-        <p>Explique de forma simples o primeiro grande resultado que o cliente vai ter.</p>
-      </div>
-      <div class="bcard">
-        <div class="ico">⏱️</div>
-        <h3>Benefício 2</h3>
-        <p>Mostre como o produto economiza tempo, dinheiro ou esforço da pessoa.</p>
-      </div>
-      <div class="bcard">
-        <div class="ico">🎯</div>
-        <h3>Benefício 3</h3>
-        <p>Destaque o diferencial que só o seu produto entrega e os outros não.</p>
-      </div>
+      <div class="bcard"><span class="step-num">40%</span><div class="ico">📖</div><h3>1. Leitura Ativa</h3><p>Teoria dos Volumes 1 a 5 grifando prazos, competências e conceitos doutrinários-chave que a banca cobra.</p></div>
+      <div class="bcard"><span class="step-num">20%</span><div class="ico">🛡️</div><h3>2. Blindagem com Exemplos</h3><p>Compare o 🟩 Exemplo Correto, o 🟥 Incorreto e a 🟦 Pegadinha da banca — é no contraste que a UFG monta as alternativas erradas.</p></div>
+      <div class="bcard"><span class="step-num">30%</span><div class="ico">✍️</div><h3>3. Bateria Diária de Questões</h3><p>18 a 25 questões comentadas por dia do Super Caderno de 1.500, alimentando seu Caderno de Erros.</p></div>
+      <div class="bcard"><span class="step-num">10%</span><div class="ico">🔁</div><h3>4. Revisão Espaçada + Discursiva</h3><p>Revisão 24h/7d/30d aos sábados e 1 redação de 30 linhas cronometrada todo domingo.</p></div>
     </div>
   </div>
 </section>
@@ -145,12 +190,43 @@ footer .fbrand{color:#fff;font-weight:700;font-size:16px;margin-bottom:10px}
 <section class="includes">
   <div class="wrap">
     <h2 class="section-title">O que você vai receber</h2>
-    <p class="section-sub" style="color:rgba(255,255,255,.7)">Liste tudo que o cliente leva ao comprar — módulos, bônus, materiais.</p>
+    <p class="section-sub" style="color:rgba(255,255,255,.7)">A Coleção Preparatória Completa — Teoria, Jurisprudência e Prática, 100% focada no cargo de Analista Judiciário (Apoio Judiciário e Administrativo).</p>
     <div class="inc-list">
-      <div class="inc-item"><span class="chk">✓</span><div><b>Item / Módulo 1</b><span>Breve descrição do que a pessoa recebe.</span></div></div>
-      <div class="inc-item"><span class="chk">✓</span><div><b>Item / Módulo 2</b><span>Breve descrição do que a pessoa recebe.</span></div></div>
-      <div class="inc-item"><span class="chk">✓</span><div><b>Item / Módulo 3</b><span>Breve descrição do que a pessoa recebe.</span></div></div>
-      <div class="inc-item"><span class="chk">✓</span><div><b>🎁 Bônus exclusivo</b><span>Um bônus aumenta MUITO a conversão. Capriche aqui.</span></div></div>
+      <div class="inc-item"><span class="chk">✓</span><div><b>5 Volumes Teóricos Completos</b><span>Todas as 6 disciplinas do edital, com quadros comparativos e os 3 boxes de exemplos coloridos em cada tópico.</span></div></div>
+      <div class="inc-item"><span class="chk">✓</span><div><b>Super Caderno com 1.500 Questões Comentadas</b><span>Organizadas por disciplina (Q0001–Q1500), no estilo UFG / Instituto Verbena, com comentários de todas as alternativas.</span></div></div>
+      <div class="inc-item"><span class="chk">✓</span><div><b>Cronograma Tático de 12 Semanas</b><span>Semana a semana: quais tópicos ler, quais blocos de questões resolver (125/semana) e a meta de domingo.</span></div></div>
+      <div class="inc-item"><span class="chk">✓</span><div><b>Oficina de Redação Discursiva (Vol. 5)</b><span>4 temas modelo com espelhos de correção — treino de 12 redações de 30 linhas até a prova (a discursiva vale 50% da nota!).</span></div></div>
+      <div class="inc-item"><span class="chk">✓</span><div><b>Simulados Completos + Caderno de Lei Seca</b><span>2 simulados de 60 questões com discursiva em 5h, mini-simulados e os Artigos Quentes Grifados do TJ-GO.</span></div></div>
+      <div class="inc-item bonus"><span class="chk">🎁</span><div><b>BÔNUS: Guia do Método de Estudo 80/20</b><span>O guia estratégico com a Engenharia de Pontos, o ciclo semanal de 24h e o passo a passo dos 4 passos do método.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARA QUEM É ===================== -->
+<section>
+  <div class="wrap">
+    <h2 class="section-title">Essa coleção é para você?</h2>
+    <p class="section-sub">Seja honesto com seu momento — o material foi desenhado para um perfil específico.</p>
+    <div class="who">
+      <div class="who-col">
+        <h3>✅ É para você que...</h3>
+        <ul>
+          <li>Vai prestar o TJ-GO para Analista Judiciário — Apoio Judiciário e Administrativo</li>
+          <li>Trabalha e tem no máximo 3–4 horas por dia para estudar</li>
+          <li>Quer um plano pronto, sem perder tempo montando cronograma</li>
+          <li>Precisa treinar a discursiva de 30 linhas no padrão UFG</li>
+          <li>Prefere estudar por material direto ao ponto, focado no edital</li>
+        </ul>
+      </div>
+      <div class="who-col no">
+        <h3>❌ NÃO é para você que...</h3>
+        <ul>
+          <li>Procura fórmula mágica sem resolver questões</li>
+          <li>Quer videoaulas longas em vez de material objetivo</li>
+          <li>Não pretende seguir um cronograma semanal</li>
+          <li>Busca material genérico para “qualquer concurso”</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -158,17 +234,24 @@ footer .fbrand{color:#fff;font-weight:700;font-size:16px;margin-bottom:10px}
 <!-- ===================== PREÇO / OFERTA ===================== -->
 <section class="price-sec" id="comprar">
   <div class="wrap">
-    <h2 class="section-title">Garanta o seu agora</h2>
-    <p class="section-sub">Oferta especial de lançamento. O preço volta ao normal em breve.</p>
+    <h2 class="section-title">Garanta sua preparação completa</h2>
+    <p class="section-sub">Menos que o preço de uma única mensalidade de cursinho — com tudo que você precisa até o dia da prova.</p>
     <div class="price-box">
-      <span class="tag">⭐ MELHOR OFERTA</span>
+      <span class="tag">⭐ COLEÇÃO COMPLETA</span>
+      <div class="plist">
+        <div>5 Volumes Teóricos (todas as disciplinas)</div>
+        <div>1.500 Questões Comentadas</div>
+        <div>Cronograma de 12 Semanas</div>
+        <div>Oficina Discursiva + Espelhos</div>
+        <div>Bônus: Guia do Método 80/20</div>
+      </div>
       <p class="old">De R$ 197,00</p>
       <p class="now">por apenas</p>
       <div class="big"><span>R$</span> 97<span>,00</span></div>
-      <p class="installments">ou 12x de R$ 9,90</p>
+      <p class="installments">ou em até 12x no cartão</p>
       <!-- >>> TROQUE O href="#" PELO SEU LINK DO KIWIFY <<< -->
-      <a href="#" class="btn-cta">COMPRAR AGORA <small>Acesso liberado na hora</small></a>
-      <p class="secure">🔒 Pagamento 100% seguro via Kiwify</p>
+      <a href="#" class="btn-cta">COMPRAR AGORA <small>Acesso liberado imediatamente após o pagamento</small></a>
+      <p class="secure">🔒 Pagamento 100% seguro via Kiwify · Pix, cartão ou boleto</p>
     </div>
   </div>
 </section>
@@ -180,7 +263,7 @@ footer .fbrand{color:#fff;font-weight:700;font-size:16px;margin-bottom:10px}
       <div class="seal">🛡️</div>
       <div>
         <h3>Garantia incondicional de 7 dias</h3>
-        <p>Se não gostar por qualquer motivo, é só pedir reembolso dentro de 7 dias e devolvemos 100% do seu dinheiro. Sem perguntas.</p>
+        <p>Baixe o material, siga a primeira semana do cronograma e resolva as primeiras questões. Se não gostar por qualquer motivo, peça reembolso em até 7 dias e devolvemos 100% do valor. Sem perguntas.</p>
       </div>
     </div>
   </div>
@@ -190,35 +273,36 @@ footer .fbrand{color:#fff;font-weight:700;font-size:16px;margin-bottom:10px}
 <section>
   <div class="wrap" style="max-width:720px">
     <h2 class="section-title">Perguntas frequentes</h2>
-    <p class="section-sub">Responda as dúvidas que travam a compra.</p>
-    <details class="faq-item"><summary>Como eu recebo o acesso?</summary><div class="answer">Logo após a confirmação do pagamento pelo Kiwify, você recebe o acesso automaticamente no seu e-mail.</div></details>
-    <details class="faq-item"><summary>Por quanto tempo tenho acesso?</summary><div class="answer">Explique aqui se o acesso é vitalício, por 1 ano, etc.</div></details>
-    <details class="faq-item"><summary>Posso pagar no cartão ou Pix?</summary><div class="answer">Sim! O Kiwify aceita cartão de crédito (parcelado), Pix e boleto.</div></details>
-    <details class="faq-item"><summary>E se eu não gostar?</summary><div class="answer">Você tem 7 dias de garantia. Se não for pra você, devolvemos todo o seu dinheiro.</div></details>
+    <details class="faq-item"><summary>Como recebo o material?</summary><div class="answer">Logo após a confirmação do pagamento, o Kiwify libera seu acesso automaticamente e envia tudo para o seu e-mail. No Pix e cartão, a liberação é imediata.</div></details>
+    <details class="faq-item"><summary>O material está atualizado?</summary><div class="answer">Sim. Todo o conteúdo é 100% fundamentado no Edital nº 02/2021 (UFG / Instituto Verbena), com legislação atualizada até 2026 — incluindo a Lei 14.133/2021, LGPD, Res. CNJ 325/2020 e a legislação específica do TJ-GO.</div></details>
+    <details class="faq-item"><summary>Funciona para quem trabalha o dia todo?</summary><div class="answer">O cronograma foi desenhado para um ciclo semanal de 24 horas (cerca de 3–4h por dia), com metas diárias de 18 a 25 questões. É um plano realista para quem concilia estudo e trabalho.</div></details>
+    <details class="faq-item"><summary>Posso pagar no Pix, cartão ou boleto?</summary><div class="answer">Sim! O checkout do Kiwify aceita Pix (liberação na hora), cartão de crédito em até 12x e boleto bancário.</div></details>
+    <details class="faq-item"><summary>Por quanto tempo tenho acesso?</summary><div class="answer">O acesso é seu para sempre — você baixa o material e estuda no seu ritmo, no celular, tablet ou computador.</div></details>
+    <details class="faq-item"><summary>E se eu não me adaptar ao material?</summary><div class="answer">Você tem 7 dias de garantia incondicional. Basta pedir o reembolso dentro desse prazo e devolvemos 100% do valor pago.</div></details>
   </div>
 </section>
 
 <!-- ===================== CTA FINAL ===================== -->
 <section style="text-align:center;background:var(--navy-dark);color:#fff">
   <div class="wrap">
-    <h2 class="section-title" style="color:#fff">Pronto para começar?</h2>
-    <p class="section-sub" style="color:rgba(255,255,255,.7)">Não deixe essa oportunidade passar. Clique abaixo e garanta o seu acesso.</p>
+    <h2 class="section-title" style="color:#fff">Sua aprovação começa na próxima segunda-feira</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.7)">Semana 01 do cronograma te espera: Volume 1, Volume 4 e as primeiras 125 questões. Enquanto os outros estudam no escuro, você segue um plano.</p>
     <!-- >>> TROQUE O href="#" PELO SEU LINK DO KIWIFY <<< -->
-    <a href="#" class="btn-cta">QUERO GARANTIR AGORA <small>Compra segura · Acesso imediato</small></a>
+    <a href="#" class="btn-cta">QUERO COMEÇAR AGORA <small>Compra segura via Kiwify · Garantia de 7 dias</small></a>
   </div>
 </section>
 
 <!-- ===================== FOOTER ===================== -->
 <footer>
-  <div class="fbrand">NOME DO PRODUTO</div>
+  <div class="fbrand">Coleção Preparatória TJ-GO — Alto Desempenho</div>
   <p>© 2026 · Todos os direitos reservados.</p>
-  <p style="margin-top:8px">Contato: <a href="mailto:seu@email.com">seu@email.com</a></p>
-  <p style="margin-top:12px;font-size:11px;opacity:.6">Este produto é comercializado com apoio da plataforma Kiwify.</p>
+  <p style="margin-top:8px">Dúvidas? <a href="mailto:seu@email.com">seu@email.com</a></p>
+  <p style="margin-top:12px;font-size:11px;opacity:.6;max-width:640px;margin-left:auto;margin-right:auto">Material de estudo independente, fundamentado no Edital nº 02/2021 (UFG / Instituto Verbena). Este produto não possui vínculo com o TJ-GO, a UFG ou o Instituto Verbena. A compra é processada pela plataforma Kiwify.</p>
 </footer>
 
 <!-- ===================== BOTÃO FLUTUANTE (celular) ===================== -->
 <div class="float-cta">
-  <a href="#comprar" class="btn-cta">COMPRAR AGORA</a>
+  <a href="#comprar" class="btn-cta">💼 QUERO MINHA VAGA — R$ 97</a>
 </div>
 
 </body>
