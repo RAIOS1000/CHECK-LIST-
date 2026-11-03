@@ -3,713 +3,303 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#1B3A6B">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="CEPACE">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icons/icon-192.png">
-<title>CEPACE — Checklist Diário</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#0F2447">
+<title>Coleção Preparatória TJ-GO — Analista Judiciário (Apoio Judiciário e Administrativo)</title>
+<meta name="description" content="Material em PDF para o concurso do TJ-GO (Analista Judiciário): 112 aulas escritas em 5 volumes, 1.120 questões inéditas comentadas, cronograma de 12 semanas e oficina discursiva com espelhos de correção. Baseado no Edital nº 02/2021 (UFG / Instituto Verbena).">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   Checkout Kiwify: https://pay.kiwify.com.br/7dk3EDK
+   (usado nos botões COMPRAR AGORA, QUERO COMEÇAR AGORA e no
+   botão flutuante do celular; o botão do topo rola até a oferta)
+   ============================================================ */
 :root{
-  --navy:#1B3A6B;--navy-dark:#0F2447;--amber:#F59E0B;--amber-l:#FEF3C7;--amber-t:#92400E;
-  --green:#16A34A;--green-l:#F0FDF4;--green-t:#14532D;
-  --red:#DC2626;--red-l:#FEF2F2;--red-t:#7F1D1D;
-  --blue:#2E5FA3;--blue-l:#EEF3FB;--blue-t:#1B3A6B;
-  --wa:#25D366;--wa-dk:#128C7E;--wa-l:#E8F9F0;--wa-ll:#F0FDF7;
-  --g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g300:#CBD5E1;
-  --g400:#94A3B8;--g500:#64748B;--g700:#334155;--g800:#1E293B;
-  --surface:#fff;--bg:#F1F5F9;--r:10px;--rsm:6px;--rlg:14px;
+  --navy:#1B3A6B;--navy-dark:#0F2447;--amber:#F59E0B;--amber-d:#D97706;
+  --green:#16A34A;--green-d:#15803D;
+  --g50:#F8FAFC;--g100:#F1F5F9;--g200:#E2E8F0;--g400:#94A3B8;
+  --g500:#64748B;--g700:#334155;--g800:#1E293B;--g900:#0F172A;
+  --bg:#F8FAFC;--surface:#fff;--r:14px;--rlg:20px;
 }
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;overscroll-behavior:none}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--g800)}
-.app{display:flex;flex-direction:column;height:100dvh;max-width:480px;margin:0 auto;position:relative;overflow:hidden}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--g800);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.btn-cta{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;background:linear-gradient(180deg,var(--green) 0%,var(--green-d) 100%);color:#fff;font-size:18px;font-weight:700;padding:18px 34px;border-radius:var(--r);text-decoration:none;border:none;cursor:pointer;box-shadow:0 8px 24px rgba(22,163,74,.35);transition:transform .15s,box-shadow .15s;text-align:center}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(22,163,74,.45)}
+.btn-cta:active{transform:translateY(0)}
+.btn-cta small{display:block;font-size:12px;font-weight:500;opacity:.85}
 
-/* HEADER */
-.hdr{background:var(--navy-dark);padding-top:env(safe-area-inset-top,0);flex-shrink:0;z-index:10}
-.hdr-inner{padding:14px 18px 12px;display:flex;align-items:center;justify-content:space-between}
-.hdr-brand{display:flex;align-items:center;gap:10px}
-.hdr-icon{width:34px;height:34px;border-radius:9px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.hdr-title{color:#fff;font-size:15px;font-weight:600;letter-spacing:-.2px}
-.hdr-sub{color:rgba(255,255,255,.45);font-size:11px;margin-top:1px}
-.hdr-chip{font-family:'DM Mono',monospace;color:var(--amber);font-size:11px;font-weight:500;background:rgba(245,158,11,.12);border-radius:6px;padding:5px 9px;border:1px solid rgba(245,158,11,.2);white-space:nowrap}
-.back-hdr{display:flex;align-items:center;gap:10px;padding:12px 18px}
-.back-btn{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,.1);border:none;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.proc-tag{font-family:'DM Mono',monospace;color:rgba(255,255,255,.85);font-size:12px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.remind-btn-hdr{padding:6px 10px;border-radius:6px;background:rgba(245,158,11,.15);border:1px solid rgba(245,158,11,.3);color:var(--amber);font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0}
-.cl-prog{padding:8px 18px 12px}
-.cl-prog-row{display:flex;justify-content:space-between;margin-bottom:5px}
-.cl-prog-lbl{color:rgba(255,255,255,.5);font-size:11px}
-.cl-prog-pct{color:var(--amber);font-size:11px;font-family:'DM Mono',monospace}
-.cl-track{height:3px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
-.cl-fill{height:3px;background:var(--amber);border-radius:3px;transition:width .3s}
+/* HERO */
+.hero{background:linear-gradient(160deg,var(--navy-dark) 0%,var(--navy) 100%);color:#fff;padding:64px 0 90px;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:60px;background:var(--bg);clip-path:polygon(0 100%,100% 100%,100% 0,50% 60%,0 0)}
+.badge{display:inline-block;background:rgba(245,158,11,.15);color:var(--amber);border:1px solid rgba(245,158,11,.35);font-size:12px;font-weight:700;padding:7px 16px;border-radius:30px;margin-bottom:22px;letter-spacing:.5px;text-transform:uppercase}
+.hero h1{font-size:clamp(27px,5.5vw,44px);font-weight:800;letter-spacing:-.5px;line-height:1.15;margin-bottom:18px;max-width:860px;margin-left:auto;margin-right:auto}
+.hero h1 span{color:var(--amber)}
+.hero p.sub{font-size:clamp(15px,2.5vw,19px);color:rgba(255,255,255,.8);max-width:680px;margin:0 auto 30px}
+.hero .btn-cta{position:relative;z-index:2}
+.hero .reassure{margin-top:16px;font-size:13px;color:rgba(255,255,255,.6);position:relative;z-index:2}
+.hero-stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:30px auto 34px;max-width:720px}
+.hstat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:14px 20px;min-width:140px}
+.hstat b{display:block;font-size:26px;font-weight:800;color:var(--amber);letter-spacing:-.5px}
+.hstat span{font-size:12px;color:rgba(255,255,255,.7)}
 
-/* BOTTOM NAV */
-.bnav{display:flex;background:var(--surface);border-top:1px solid var(--g200);padding-bottom:env(safe-area-inset-bottom,0);flex-shrink:0}
-.nav-it{flex:1;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;user-select:none;color:var(--g400);font-size:10px;font-weight:500;transition:color .2s;position:relative}
-.nav-it.active{color:var(--navy)}
-.nav-ico{font-size:20px;line-height:1}
-.rdot{position:absolute;top:8px;right:calc(50% - 14px);width:7px;height:7px;border-radius:50%;background:var(--red);border:1.5px solid var(--surface)}
+/* SECTIONS */
+section{padding:58px 0}
+.section-title{font-size:clamp(23px,4vw,33px);font-weight:800;color:var(--navy-dark);text-align:center;letter-spacing:-.5px;margin-bottom:12px}
+.section-sub{font-size:16px;color:var(--g500);text-align:center;max-width:680px;margin:0 auto 42px}
 
-.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 14px 16px}
+/* MATEMÁTICA DA APROVAÇÃO */
+.math-box{max-width:760px;margin:0 auto;background:var(--surface);border:1px solid var(--g200);border-radius:var(--rlg);overflow:hidden}
+.math-row{display:flex;align-items:center;gap:16px;padding:16px 22px;border-bottom:1px solid var(--g100)}
+.math-row:last-child{border-bottom:none}
+.math-pct{flex-shrink:0;width:72px;font-size:21px;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums}
+.math-bar{flex:1;min-width:0}
+.math-bar b{display:block;font-size:14px;color:var(--g800);margin-bottom:6px}
+.math-track{height:8px;background:var(--g100);border-radius:8px;overflow:hidden}
+.math-fill{height:8px;border-radius:8px;background:linear-gradient(90deg,var(--amber),var(--amber-d))}
+.math-fill.blue{background:linear-gradient(90deg,var(--navy),#2E5FA3)}
+.math-alert{max-width:760px;margin:22px auto 0;background:#FEF3C7;border:1px solid rgba(245,158,11,.4);border-radius:var(--r);padding:18px 22px;font-size:15px;color:#92400E}
+.math-alert b{color:#78350F}
 
-/* CARD + ITEM */
-.card{background:var(--surface);border-radius:var(--r);border:1px solid var(--g200)}
-.sec{margin-bottom:16px}
-.sec-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g500);padding:0 2px;margin-bottom:6px}
-.item{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;cursor:pointer;border-bottom:1px solid var(--g100);transition:background .15s;user-select:none}
-.item:last-child{border-bottom:none}
-.item:active{background:var(--g50)}
-.item.done{background:#FAFFFE}
-.cb{width:20px;height:20px;border-radius:5px;flex-shrink:0;margin-top:1px;border:1.5px solid var(--g300);display:flex;align-items:center;justify-content:center;transition:all .2s;background:#fff}
-.item.done .cb{background:var(--green);border-color:var(--green)}
-.cb::after{display:none}
-.item.done .cb::after{display:block;content:'';width:5px;height:9px;border:2px solid #fff;border-top:none;border-left:none;transform:rotate(42deg) translateY(-1px)}
-.item-body{flex:1;min-width:0}
-.item-txt{font-size:13px;color:var(--g800);line-height:1.45;font-weight:500}
-.item.done .item-txt{color:var(--g400);text-decoration:line-through}
-.item-sub{font-size:11px;color:var(--g500);margin-top:3px;line-height:1.4}
-.item.done .item-sub{color:var(--g300)}
-.bdg{display:inline-block;font-size:9px;font-weight:600;padding:2px 6px;border-radius:20px;margin-left:5px;vertical-align:middle;text-transform:uppercase;letter-spacing:.04em}
-.b-red{background:var(--red-l);color:var(--red)}
-.b-amber{background:var(--amber-l);color:var(--amber-t)}
-.b-blue{background:var(--blue-l);color:var(--blue-t)}
+/* BENEFITS / MÉTODO */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.bcard{background:var(--surface);border:1px solid var(--g200);border-radius:var(--rlg);padding:28px 24px;transition:transform .2s,box-shadow .2s;position:relative}
+.bcard:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(15,36,71,.08)}
+.bcard .ico{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--amber),var(--amber-d));display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px}
+.bcard h3{font-size:18px;font-weight:700;color:var(--navy-dark);margin-bottom:8px}
+.bcard p{font-size:14px;color:var(--g500)}
+.step-num{position:absolute;top:22px;right:22px;font-size:13px;font-weight:800;color:var(--g400);background:var(--g100);border-radius:8px;padding:4px 10px}
 
-/* PROCESS CARDS */
-.proc-card{background:var(--surface);border-radius:var(--r);border:1px solid var(--g200);padding:13px 14px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:border-color .15s}
-.proc-card:active{background:var(--g50)}
-.proc-card.done-full{border-left:3px solid var(--green)}
-.proc-num{font-family:'DM Mono',monospace;font-size:12px;color:var(--navy);font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.proc-bar-bg{flex:1;height:4px;background:var(--g200);border-radius:4px;overflow:hidden}
-.proc-bar-fill{height:4px;border-radius:4px;transition:width .3s}
-.proc-pct{font-size:10px;font-family:'DM Mono',monospace;color:var(--g500)}
-.rdot-sm{width:7px;height:7px;border-radius:50%;background:var(--amber);flex-shrink:0}
-.del-btn{padding:4px 8px;border-radius:5px;border:1px solid var(--g200);background:#fff;color:var(--g400);font-size:13px;cursor:pointer;flex-shrink:0}
-.del-btn:active{background:var(--red-l);color:var(--red);border-color:var(--red)}
-.btn-add{width:100%;padding:13px;border-radius:var(--r);border:1.5px dashed var(--g300);background:#fff;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;color:var(--navy);cursor:pointer;text-align:center;transition:all .2s;margin-bottom:16px;display:flex;align-items:center;justify-content:center;gap:6px}
-.btn-add:active{background:var(--g50);border-style:solid}
+/* INCLUDES */
+.includes{background:var(--navy-dark);color:#fff}
+.includes .section-title{color:#fff}
+.inc-list{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.inc-item{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r);padding:16px 20px}
+.inc-item .chk{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700}
+.inc-item div b{display:block;font-size:16px;margin-bottom:2px}
+.inc-item div span{font-size:14px;color:rgba(255,255,255,.65)}
+.inc-item.bonus{border-color:rgba(245,158,11,.45);background:rgba(245,158,11,.08)}
+.inc-item.bonus .chk{background:var(--amber)}
 
-/* DAY STATS */
-.day-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px}
-.stat-card{background:var(--surface);border-radius:var(--rsm);border:1px solid var(--g200);padding:10px 12px;text-align:center}
-.stat-n{font-size:22px;font-weight:600;font-family:'DM Mono',monospace;color:var(--navy)}
-.stat-l{font-size:10px;color:var(--g500);margin-top:2px}
+/* PARA QUEM É */
+.who{max-width:760px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.who-col{background:var(--surface);border:1px solid var(--g200);border-radius:var(--rlg);padding:26px 24px}
+.who-col h3{font-size:17px;font-weight:700;margin-bottom:14px;color:var(--navy-dark)}
+.who-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.who-col li{font-size:14px;color:var(--g700);padding-left:26px;position:relative}
+.who-col li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+.who-col.no li::before{content:"✕";color:#DC2626}
 
-/* ★ REMINDER BANNER — redesenhado para WhatsApp em destaque */
-.rem-card{border-radius:var(--r);margin-bottom:12px;overflow:hidden;border:1.5px solid var(--wa);box-shadow:0 2px 12px rgba(37,211,102,.15)}
-.rem-card-head{background:var(--wa-l);padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
-.rem-card-ico{font-size:22px;flex-shrink:0;line-height:1;margin-top:1px}
-.rem-card-body{flex:1;min-width:0}
-.rem-card-num{font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:var(--wa-dk);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.rem-card-note{font-size:12px;color:var(--wa-dk);margin-top:3px;opacity:.85}
-.rem-card-date{font-size:11px;color:var(--wa-dk);margin-top:2px;opacity:.65}
-.rem-card-phone{font-size:11px;color:var(--wa-dk);margin-top:2px;font-family:'DM Mono',monospace;opacity:.7}
-.rem-x{background:none;border:none;font-size:18px;color:var(--wa-dk);opacity:.5;cursor:pointer;padding:0;flex-shrink:0;line-height:1}
+/* PRICE */
+.price-sec{text-align:center}
+.price-box{max-width:480px;margin:0 auto;background:var(--surface);border:2px solid var(--amber);border-radius:var(--rlg);padding:40px 30px;box-shadow:0 20px 50px rgba(245,158,11,.15);position:relative}
+.price-box .tag{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--amber);color:#fff;font-size:13px;font-weight:700;padding:6px 20px;border-radius:30px;white-space:nowrap}
+.price-box .plist{text-align:left;margin:0 auto 22px;max-width:340px;display:flex;flex-direction:column;gap:8px}
+.price-box .plist div{font-size:14px;color:var(--g700)}
+.price-box .plist div::before{content:"✓ ";color:var(--green);font-weight:700}
+.price-box .old{font-size:17px;color:var(--g400);text-decoration:line-through;margin-top:6px}
+.price-box .now{font-size:15px;color:var(--g500);margin-top:4px}
+.price-box .big{font-size:52px;font-weight:800;color:var(--navy-dark);letter-spacing:-1px;line-height:1.1;margin:4px 0}
+.price-box .big span{font-size:22px;vertical-align:super;font-weight:600}
+.price-box .installments{font-size:15px;color:var(--g500);margin-bottom:26px}
+.price-box .btn-cta{width:100%}
+.price-box .secure{margin-top:16px;font-size:13px;color:var(--g400)}
 
-/* WhatsApp CTA button — large, unmissable */
-.btn-wa-cta{width:100%;padding:14px 16px;background:var(--wa);border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:background .15s;letter-spacing:-.1px}
-.btn-wa-cta:active{background:var(--wa-dk)}
-.btn-wa-cta-sub{font-size:11px;font-weight:400;opacity:.85;margin-top:1px}
-.btn-open-proc{width:100%;padding:10px;background:var(--g100);border:none;border-top:1px solid rgba(37,211,102,.2);color:var(--g700);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:background .15s}
-.btn-open-proc:active{background:var(--g200)}
+/* GUARANTEE */
+.guarantee{display:flex;align-items:center;gap:24px;background:var(--green);color:#fff;border-radius:var(--rlg);padding:32px;max-width:720px;margin:0 auto;flex-wrap:wrap;justify-content:center;text-align:center}
+.guarantee .seal{font-size:64px;line-height:1}
+.guarantee h3{font-size:22px;font-weight:800;margin-bottom:6px}
+.guarantee p{font-size:15px;color:rgba(255,255,255,.9);max-width:440px}
 
-/* NOTIF PERMISSION CARD */
-.notif-card{background:var(--amber-l);border:1px solid var(--amber);border-radius:var(--r);padding:12px 14px;margin-bottom:12px;display:flex;align-items:center;gap:12px}
-.notif-card-txt{flex:1;font-size:12px;color:var(--amber-t);line-height:1.5}
-.btn-enable-notif{background:var(--amber);border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;padding:8px 14px;border-radius:6px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+/* FAQ */
+.faq-item{background:var(--surface);border:1px solid var(--g200);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
+.faq-item summary{list-style:none;cursor:pointer;padding:20px 22px;font-size:16px;font-weight:600;color:var(--navy-dark);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";font-size:24px;color:var(--amber);font-weight:400;flex-shrink:0}
+.faq-item[open] summary::after{content:"–"}
+.faq-item .answer{padding:0 22px 20px;font-size:15px;color:var(--g500)}
 
-/* MODAL */
-.modal-bg{position:fixed;inset:0;background:rgba(15,36,71,.55);z-index:100;display:flex;align-items:flex-end;justify-content:center}
-.modal{background:var(--surface);border-radius:var(--rlg) var(--rlg) 0 0;width:100%;max-width:480px;padding:20px 20px calc(env(safe-area-inset-bottom,0) + 20px);max-height:92dvh;overflow-y:auto}
-.modal-handle{width:36px;height:4px;background:var(--g200);border-radius:2px;margin:0 auto 20px}
-.modal-title{font-size:16px;font-weight:600;color:var(--g800);margin-bottom:16px}
-.form-g{margin-bottom:14px}
-.form-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--g500);margin-bottom:6px;display:block}
-.form-in{width:100%;padding:11px 13px;border-radius:var(--rsm);border:1px solid var(--g200);font-family:'DM Sans',sans-serif;font-size:14px;color:var(--g800);background:var(--surface);outline:none;transition:border-color .2s;-webkit-appearance:none}
-.form-in:focus{border-color:var(--navy)}
-.mono-in{font-family:'DM Mono',monospace;font-size:13px}
-.form-hint{font-size:11px;color:var(--g400);margin-top:4px;line-height:1.5}
+/* FOOTER */
+footer{background:var(--navy-dark);color:rgba(255,255,255,.6);text-align:center;padding:40px 20px;font-size:13px}
+footer a{color:var(--amber);text-decoration:none}
+footer .fbrand{color:#fff;font-weight:700;font-size:16px;margin-bottom:10px}
 
-/* Phone row */
-.phone-row{display:flex;align-items:center;border:1px solid var(--g200);border-radius:var(--rsm);overflow:hidden;transition:border-color .2s}
-.phone-row:focus-within{border-color:var(--navy)}
-.phone-prefix{background:var(--g100);padding:11px 10px;font-size:13px;color:var(--g500);font-family:'DM Mono',monospace;border-right:1px solid var(--g200);white-space:nowrap;flex-shrink:0}
-.phone-in{flex:1;padding:11px 12px;border:none;outline:none;font-family:'DM Mono',monospace;font-size:14px;color:var(--g800);background:transparent}
-
-/* WhatsApp preview */
-.wa-preview{background:var(--wa-ll);border:1px solid rgba(37,211,102,.25);border-radius:var(--rsm);padding:12px 13px;margin-top:14px}
-.wa-preview-hdr{display:flex;align-items:center;gap:6px;margin-bottom:8px;font-size:11px;font-weight:600;color:var(--wa-dk)}
-.wa-preview-bubble{background:#fff;border-radius:8px 8px 8px 2px;padding:10px 12px;border:1px solid rgba(37,211,102,.15);font-size:12px;color:var(--g800);line-height:1.6;white-space:pre-line}
-
-/* ★ NOTIF EXPLANATION BOX (shown after permission granted) */
-.notif-ok-card{background:var(--wa-l);border:1px solid rgba(37,211,102,.3);border-radius:var(--r);padding:12px 14px;margin-top:14px}
-.notif-ok-title{font-size:12px;font-weight:600;color:var(--wa-dk);margin-bottom:4px}
-.notif-ok-steps{list-style:none;padding:0}
-.notif-ok-steps li{font-size:11px;color:var(--wa-dk);padding:3px 0;opacity:.85;display:flex;align-items:flex-start;gap:6px}
-
-.btn-row{display:flex;gap:10px;margin-top:16px}
-.btn-row .btn{flex:1}
-.btn{padding:12px 20px;border-radius:var(--rsm);border:none;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;width:100%;text-align:center;transition:all .15s}
-.btn-primary{background:var(--navy);color:#fff}
-.btn-primary:active{background:var(--navy-dark)}
-.btn-secondary{background:var(--g100);color:var(--g700)}
-.btn-danger{background:var(--red-l);color:var(--red)}
-
-/* CHART */
-.chart-wrap{background:var(--surface);border-radius:var(--r);border:1px solid var(--g200);padding:16px 12px 12px;margin-bottom:16px}
-.chart-ttl{font-size:12px;font-weight:600;color:var(--g500);margin-bottom:12px}
-.legend{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
-.leg-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--g500)}
-.leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
-.hist-g{margin-bottom:20px}
-.hist-date-lbl{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--g500);margin-bottom:8px;padding:0 2px}
-.hist-card{background:var(--surface);border-radius:var(--r);border:1px solid var(--g200);padding:12px 14px;margin-bottom:6px;display:flex;align-items:center;gap:10px;cursor:pointer}
-.hist-card:active{background:var(--g50)}
-.hist-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--navy);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.hist-pct{font-family:'DM Mono',monospace;font-size:14px;font-weight:500}
-.al-card{border-radius:var(--r);padding:12px 14px;margin-bottom:10px;border-left:4px solid}
-.al-card.warn{background:var(--amber-l);border-color:var(--amber)}
-.al-card.danger{background:var(--red-l);border-color:var(--red)}
-.al-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
-.al-card.warn .al-title{color:var(--amber-t)}
-.al-card.danger .al-title{color:var(--red)}
-.al-txt{font-size:12px;line-height:1.5}
-.al-card.warn .al-txt{color:var(--amber-t)}
-.al-card.danger .al-txt{color:var(--red-t)}
-.toast{position:fixed;bottom:calc(env(safe-area-inset-bottom,0) + 72px);left:50%;transform:translateX(-50%) translateY(12px);background:var(--g800);color:#fff;font-size:13px;font-weight:500;padding:10px 18px;border-radius:20px;opacity:0;transition:all .25s;pointer-events:none;white-space:nowrap;z-index:999}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.empty{text-align:center;padding:40px 20px;color:var(--g400)}
-.empty-ico{font-size:36px;margin-bottom:10px}
-.empty-txt{font-size:14px;line-height:1.6}
+/* FLOATING CTA (mobile) */
+.float-cta{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--g200);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0));box-shadow:0 -4px 20px rgba(0,0,0,.08);z-index:50;display:none}
+.float-cta .btn-cta{width:100%;padding:14px;font-size:16px}
+@media(max-width:600px){
+  .float-cta{display:block}
+  body{padding-bottom:84px}
+  section{padding:44px 0}
+}
 </style>
 </head>
 <body>
-<div class="app" id="app"></div>
-<div class="toast" id="toast"></div>
-<script>
-const SECTIONS=[
-  {label:"Ao receber o processo",items:[
-    {id:"a1",text:"Ler a decisão do magistrado",sub:"Identificar exatamente as providências determinadas antes de qualquer ato"},
-    {id:"a2",text:"Verificar gratuidade da justiça",sub:"Certificar nos autos se deferida"},
-    {id:"a3",text:"Verificar audiência marcada no sistema",sub:"Checar PROJUDI e SAPJUD"},
-  ]},
-  {label:"Fluxo de citação",items:[
-    {id:"b1",text:"Tentar citação via WhatsApp",sub:"Prioridade sempre — salvo decisão expressa do magistrado indeferindo",badge:"prioritário",bc:"b-blue"},
-    {id:"b2",text:"Registrar data + horário da citação WhatsApp",sub:"PART + LA obrigatórios"},
-    {id:"b3",text:"Se WhatsApp não efetivado: expedir carta ou mandado no PROJUDI",sub:"Conforme determinação da decisão"},
-    {id:"b4",text:"Carta e WhatsApp podem ser expedidos simultaneamente",sub:"Mesmo que já haja mandado ou carta expedidos",badge:"lembrete",bc:"b-amber"},
-    {id:"b5",text:"Citação não efetivada: intimar para novos dados",sub:"Prazo de 24h quando audiência estiver próxima"},
-  ]},
-  {label:"Audiência próxima",items:[
-    {id:"c1",text:"Intimar parte com prazo de 24h para novos dados",sub:"Acompanhar resposta após a intimação",badge:"urgente",bc:"b-red"},
-    {id:"c2",text:"Sem manifestação: registrar citação frustrada",sub:"Audiência pode ser cancelada"},
-    {id:"c3",text:"Com novos dados: solicitar cancelamento e reagendamento",sub:"Contatar equipe de pauta imediatamente"},
-  ]},
-  {label:"Cancelamento — regras",items:[
-    {id:"d1",text:"Carta/mandado expedido: cancelar só após retorno",sub:"E apenas 1 dia antes da audiência",badge:"atenção",bc:"b-amber"},
-    {id:"d2",text:"Carta precatória: NUNCA cancelar por ausência de retorno",sub:"Manter em pauta obrigatoriamente",badge:"crítico",bc:"b-red"},
-    {id:"d3",text:"Mandado + WhatsApp: Oficial de Justiça realiza cumprimento",sub:"Inclusive por WhatsApp quando determinado pelo magistrado"},
-    {id:"d4",text:"Audiência em menos de 20 dias sem citação: reagendar + SAPJUD",sub:"Enviar para equipe de reagendamento de audiência e lançar pendência no SAPJUD",badge:"urgente",bc:"b-red"},
-  ]},
-  {label:"Defensoria Pública (quando aplicável)",items:[
-    {id:"e1",text:"Intimação pessoal pelo sistema",sub:"Ato obrigatório — 1 de 2",badge:"obrigatório",bc:"b-red"},
-    {id:"e2",text:"Intimação pessoal da parte",sub:"WhatsApp, AR ou Mandado — Ato obrigatório — 2 de 2",badge:"obrigatório",bc:"b-red"},
-  ]},
-  {label:"Registros de sistema",items:[
-    {id:"f1",text:"SAPJUD: cadastrar na hora, nunca acumular",sub:"Registro imediato de todos os atos"},
-    {id:"f2",text:"PROJUDI: não finalizar sem movimentação e certificação",sub:"Finalizar somente ao encerrar o processo"},
-  ]},
-];
-const ALL_IDS=[];SECTIONS.forEach(s=>s.items.forEach(it=>ALL_IDS.push(it.id)));
-const TOTAL=ALL_IDS.length;
 
-const ALERTS_DATA=[
-  {type:"danger",title:"⚠️ Nunca fazer",text:"Cancelar carta precatória por ausência de retorno. Manter SEMPRE em pauta."},
-  {type:"danger",title:"⚠️ Nunca fazer",text:"Finalizar processo no PROJUDI sem movimentação e certificação."},
-  {type:"danger",title:"⚠️ Nunca fazer",text:"Realizar ato sem ler a decisão do magistrado primeiro."},
-  {type:"warn",title:"📋 Defensoria Pública",text:"São obrigatórios 2 atos: (1) Intimação pessoal pelo sistema e (2) Intimação pessoal da parte — WhatsApp, AR ou Mandado."},
-  {type:"warn",title:"⏱ Audiência < 20 dias sem citação",text:"Enviar imediatamente para equipe de reagendamento + lançar pendência no SAPJUD."},
-  {type:"warn",title:"⏱ Prazos",text:"Citação próxima de audiência: prazo de 24h para novos dados. Cancelamento: apenas 1 dia antes."},
-  {type:"warn",title:"📱 WhatsApp — registro obrigatório",text:"Sempre registrar Data + Horário da citação via WhatsApp (PART + LA)."},
-];
-
-/* ── DATA ── */
-const DB='cepace_v2';
-function emptyChecklist(){const c={};ALL_IDS.forEach(id=>c[id]=false);return c}
-function load(){try{const r=localStorage.getItem(DB);if(r)return JSON.parse(r);}catch(e){}return{processes:[]}}
-function save(d){localStorage.setItem(DB,JSON.stringify(d))}
-function today(){return new Date().toISOString().slice(0,10)}
-function addProcess(num,note){
-  const d=load();
-  const p={id:'p_'+Date.now(),number:num.trim(),note:(note||'').trim(),date:today(),createdAt:new Date().toISOString(),checklist:emptyChecklist(),reminder:null};
-  d.processes.unshift(p);save(d);return p.id;
-}
-function getProc(id){return load().processes.find(p=>p.id===id)||null}
-function toggleItem(pid,iid){
-  const d=load();const p=d.processes.find(x=>x.id===pid);
-  if(!p)return;p.checklist[iid]=!p.checklist[iid];save(d);
-}
-function setReminder(pid,date,note,phone){
-  const d=load();const p=d.processes.find(x=>x.id===pid);
-  if(!p)return;
-  p.reminder=date?{date,note:(note||'').trim(),phone:(phone||'').trim(),dismissed:false}:null;
-  save(d);
-}
-function dismissRem(pid){const d=load();const p=d.processes.find(x=>x.id===pid);if(p&&p.reminder)p.reminder.dismissed=true;save(d)}
-function delProc(pid){const d=load();d.processes=d.processes.filter(p=>p.id!==pid);save(d)}
-function completion(cl){const done=Object.values(cl).filter(Boolean).length;return{done,total:TOTAL,pct:Math.round(done/TOTAL*100)}}
-function dueReminders(){const t=today();return load().processes.filter(p=>p.reminder&&!p.reminder.dismissed&&p.reminder.date<=t)}
-function fmtDate(ds){if(!ds)return'';const d=new Date(ds+'T12:00:00');return d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit'})}
-function fmtDateLong(ds){if(!ds)return'';const d=new Date(ds+'T12:00:00');return d.toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'short'})}
-function fmtProcNum(v){
-  const d=v.replace(/\D/g,'').slice(0,20);let r='';
-  if(d.length>0)r+=d.slice(0,7);if(d.length>7)r+='-'+d.slice(7,9);
-  if(d.length>9)r+='.'+d.slice(9,13);if(d.length>13)r+='.'+d.slice(13,14);
-  if(d.length>14)r+='.'+d.slice(14,16);if(d.length>16)r+='.'+d.slice(16,20);
-  return r;
-}
-function fmtPhone(v){
-  const d=v.replace(/\D/g,'').slice(0,11);
-  if(d.length<=2)return d;
-  if(d.length<=7)return`(${d.slice(0,2)}) ${d.slice(2)}`;
-  return`(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
-}
-function toWaNum(v){const d=v.replace(/\D/g,'');if(!d)return'';return d.startsWith('55')&&d.length>=12?d:'55'+d}
-function buildWaMsg(proc,rem){
-  return['🔔 *Lembrete CEPACE*','',`📋 *Processo:* ${proc.number}`,`📅 *Data:* ${fmtDate(rem.date)}`,
-    ...(rem.note?['','📝 '+rem.note]:[])].join('\n');
-}
-function waUrl(proc,rem){
-  const phone=toWaNum(rem.phone||'');
-  if(!phone)return null;
-  return`https://wa.me/${phone}?text=${encodeURIComponent(buildWaMsg(proc,rem))}`;
-}
-function openWhatsApp(pid){
-  const p=getProc(pid);if(!p||!p.reminder)return;
-  const url=waUrl(p,p.reminder);
-  if(!url){toast('Número não configurado — edite o lembrete');return}
-  window.open(url,'_blank');
-}
-
-/* ── STATE ── */
-let V={view:'home',pid:null,modal:null,fdate:null};
-function nav(view,params){V.view=view;V.pid=params?.pid||null;V.fdate=params?.fdate||null;render();const sc=document.getElementById('scroll-area');if(sc)sc.scrollTop=0}
-function openModal(m){V.modal=m;renderModal()}
-function closeModal(){V.modal=null;const e=document.getElementById('modal-bg');if(e)e.remove()}
-
-/* ── RENDER ── */
-function render(){document.getElementById('app').innerHTML=buildApp()}
-function buildApp(){
-  if(V.view==='checklist'&&V.pid)return buildChecklist();
-  return buildHeader()+`<div class="scroll" id="scroll-area">`+
-    (V.view==='home'?buildHome():'')+(V.view==='history'?buildHistory():'')+(V.view==='alerts'?buildAlerts():'')+
-    `</div>`+buildNav();
-}
-function buildHeader(){
-  const dt=new Date().toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'2-digit'});
-  return`<div class="hdr"><div class="hdr-inner"><div class="hdr-brand"><div class="hdr-icon">⚖️</div><div><div class="hdr-title">CEPACE</div><div class="hdr-sub">Checklist Operacional</div></div></div><div class="hdr-chip">${dt}</div></div></div>`;
-}
-function buildNav(){
-  const due=dueReminders().length;
-  return`<div class="bnav">
-    <div class="nav-it ${V.view==='home'?'active':''}" onclick="nav('home')"><div class="nav-ico">📋</div><span>Hoje</span></div>
-    <div class="nav-it ${V.view==='history'?'active':''}" onclick="nav('history')"><div class="nav-ico">📊</div><span>Histórico</span></div>
-    <div class="nav-it ${V.view==='alerts'?'active':''}" onclick="nav('alerts')"><div class="nav-ico">⚠️</div>${due>0?'<div class="rdot"></div>':''}<span>Alertas</span></div>
-  </div>`;
-}
-
-function buildHome(){
-  const d=load(),t=today();
-  const tProcs=d.processes.filter(p=>p.date===t);
-  const done=tProcs.filter(p=>completion(p.checklist).pct===100).length;
-  const due=dueReminders();
-  let h='';
-
-  // Notificação permission prompt
-  if('Notification'in window&&Notification.permission==='default'){
-    h+=`<div class="notif-card">
-      <div class="notif-card-txt">🔔 Ative as notificações para receber lembretes quando abrir o app</div>
-      <button class="btn-enable-notif" onclick="ativarNotificacoes()">Ativar</button>
-    </div>`;
-  }
-
-  // ★ BANNERS DE LEMBRETE VENCIDO — redesenhados com botão WhatsApp em destaque
-  due.forEach(p=>{
-    const rem=p.reminder;
-    const phone=toWaNum(rem.phone||'');
-    const hasPhone=!!phone;
-    h+=`<div class="rem-card">
-      <div class="rem-card-head">
-        <div class="rem-card-ico">🔔</div>
-        <div class="rem-card-body">
-          <div class="rem-card-num">${p.number}</div>
-          ${rem.note?`<div class="rem-card-note">${rem.note}</div>`:''}
-          <div class="rem-card-date">Lembrete: ${fmtDate(rem.date)}</div>
-          ${hasPhone?`<div class="rem-card-phone">📲 ${rem.phone}</div>`:''}
-        </div>
-        <button class="rem-x" onclick="event.stopPropagation();dismissAndRefresh('${p.id}')">✕</button>
-      </div>
-      ${hasPhone?`
-        <button class="btn-wa-cta" onclick="openWhatsApp('${p.id}')">
-          <span style="font-size:20px">📲</span>
-          <div>
-            <div>Enviar no WhatsApp</div>
-            <div class="btn-wa-cta-sub">Mensagem pronta — só confirmar o envio</div>
-          </div>
-        </button>`:''}
-      <button class="btn-open-proc" onclick="nav('checklist',{pid:'${p.id}'})">Abrir Processo →</button>
-    </div>`;
-  });
-
-  // Stats
-  if(tProcs.length>0){
-    const avg=Math.round(tProcs.reduce((a,p)=>a+completion(p.checklist).pct,0)/tProcs.length);
-    const col=avg>=80?'var(--green)':avg>=50?'var(--amber)':'var(--red)';
-    h+=`<div class="day-stats">
-      <div class="stat-card"><div class="stat-n">${tProcs.length}</div><div class="stat-l">Processos</div></div>
-      <div class="stat-card"><div class="stat-n" style="color:var(--green)">${done}</div><div class="stat-l">Concluídos</div></div>
-      <div class="stat-card"><div class="stat-n" style="color:${col}">${avg}%</div><div class="stat-l">Média</div></div>
-    </div>`;
-  }
-
-  h+=`<button class="btn-add" onclick="openModal('addProcess')">＋ Novo Processo</button>`;
-
-  if(!tProcs.length){
-    h+=`<div class="empty"><div class="empty-ico">📋</div><div class="empty-txt">Nenhum processo hoje ainda.<br>Toque em "+ Novo Processo" para iniciar.</div></div>`;
-  } else {
-    h+=`<div class="sec-lbl" style="padding:0 2px;margin-bottom:8px">Processos de hoje</div>`;
-    tProcs.forEach(p=>{
-      const{done:dn,pct}=completion(p.checklist);
-      const full=pct===100;
-      const barCol=full?'var(--green)':pct>50?'var(--amber)':'var(--blue)';
-      const pctCol=full?'var(--green)':pct>50?'var(--amber)':'var(--g400)';
-      const hasRem=p.reminder&&!p.reminder.dismissed;
-      h+=`<div class="proc-card ${full?'done-full':''}" onclick="nav('checklist',{pid:'${p.id}'})">
-        <div style="flex:1;min-width:0">
-          <div style="display:flex;align-items:center;gap:8px">
-            <div class="proc-num">${p.number}</div>
-            ${hasRem?`<div class="rdot-sm"></div>`:''}
-          </div>
-          ${p.note?`<div style="font-size:11px;color:var(--g500);margin-top:2px">${p.note}</div>`:''}
-          <div style="display:flex;align-items:center;gap:6px;margin-top:6px">
-            <div class="proc-bar-bg"><div class="proc-bar-fill" style="width:${pct}%;background:${barCol}"></div></div>
-            <div class="proc-pct">${dn}/${TOTAL}</div>
-          </div>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0">
-          <div style="font-family:'DM Mono',monospace;font-size:13px;font-weight:500;color:${pctCol}">${pct}%</div>
-          <button class="del-btn" onclick="event.stopPropagation();doDelete('${p.id}')">🗑</button>
-        </div>
-      </div>`;
-    });
-  }
-  return h;
-}
-
-function buildChecklist(){
-  const p=getProc(V.pid);if(!p)return buildApp();
-  const{done,pct}=completion(p.checklist);
-  const hasRem=p.reminder&&!p.reminder.dismissed;
-  const hasPhone=hasRem&&p.reminder.phone;
-  const dueNow=hasRem&&p.reminder.date<=today();
-
-  let h=`<div class="hdr">
-    <div class="back-hdr">
-      <button class="back-btn" onclick="nav('home')">←</button>
-      <div class="proc-tag">${p.number}</div>
-      <button class="remind-btn-hdr" onclick="openModal('setReminder')">${hasRem?'🔔 Lembrete':'＋ Lembrete'}</button>
+<!-- ===================== HERO ===================== -->
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">⚖️ Concurso TJ-GO · Base: Edital nº 02/2021 (UFG / Verbena)</span>
+    <h1>O plano completo para a prova de <span>Apoio Judiciário e Administrativo</span> do TJ-GO em 12 semanas</h1>
+    <p class="sub">Pare de estudar no escuro. A <b>Coleção Preparatória de Alto Desempenho</b> entrega, em PDF, 112 aulas escritas de teoria em 5 volumes, <b>1.120 questões inéditas comentadas</b> no estilo da banca e um cronograma semana a semana — tudo guiado pela <b>Regra 80/20 do edital</b>.</p>
+    <div class="hero-stats">
+      <div class="hstat"><b>112</b><span>aulas escritas (PDF) em 5 volumes</span></div>
+      <div class="hstat"><b>1.120</b><span>questões inéditas comentadas</span></div>
+      <div class="hstat"><b>12</b><span>semanas de cronograma guiado</span></div>
+      <div class="hstat"><b>4</b><span>discursivas resolvidas (30 linhas)</span></div>
     </div>
-    <div class="cl-prog">
-      <div class="cl-prog-row"><span class="cl-prog-lbl" id="cl-lbl">${done} de ${TOTAL} itens</span><span class="cl-prog-pct" id="cl-pct">${pct}%</span></div>
-      <div class="cl-track"><div class="cl-fill" id="cl-fill" style="width:${pct}%"></div></div>
+    <a href="#comprar" class="btn-cta">QUERO A COLEÇÃO TJ-GO <small>Material em PDF · Pagamento pela Kiwify</small></a>
+    <p class="reassure">✔ Material fundamentado no Edital nº 02/2021 (UFG) · ✔ Legislação revisada em 2026 · ✔ Garantia de 7 dias</p>
+  </div>
+</header>
+
+<!-- ===================== A MATEMÁTICA DA APROVAÇÃO ===================== -->
+<section>
+  <div class="wrap">
+    <h2 class="section-title">A matemática que reprova quem estuda “igualzinho”</h2>
+    <p class="section-sub">Dividir o tempo igualmente entre as 6 disciplinas ignora os pesos do edital: <b>80% dos pontos da Prova Objetiva estão concentrados nas 4 disciplinas de Peso 2</b>. Veja a distribuição dos 100 pontos prevista no Edital nº 02/2021:</p>
+    <div class="math-box">
+      <div class="math-row"><div class="math-pct">36%</div><div class="math-bar"><b>Noções de Administração Pública</b><div class="math-track"><div class="math-fill" style="width:36%"></div></div></div></div>
+      <div class="math-row"><div class="math-pct">20%</div><div class="math-bar"><b>Legislação Complementar do TJ-GO</b><div class="math-track"><div class="math-fill" style="width:20%"></div></div></div></div>
+      <div class="math-row"><div class="math-pct">15%</div><div class="math-bar"><b>Língua Portuguesa e Redação Oficial</b><div class="math-track"><div class="math-fill blue" style="width:15%"></div></div></div></div>
+      <div class="math-row"><div class="math-pct">14%</div><div class="math-bar"><b>Noções de Direito Administrativo</b><div class="math-track"><div class="math-fill" style="width:14%"></div></div></div></div>
+      <div class="math-row"><div class="math-pct">10%</div><div class="math-bar"><b>Noções de Direito Constitucional</b><div class="math-track"><div class="math-fill" style="width:10%"></div></div></div></div>
+      <div class="math-row"><div class="math-pct">5%</div><div class="math-bar"><b>História e Geografia de Goiás</b><div class="math-track"><div class="math-fill blue" style="width:5%"></div></div></div></div>
+    </div>
+    <div class="math-alert">⚠️ <b>E tem mais:</b> pelo Edital nº 02/2021, a Prova Discursiva vale <b>50% da nota final</b> — e muitos candidatos deixam o treino da redação de 30 linhas para a última hora. A Coleção inclui a <b>Oficina Discursiva</b> com 4 temas-modelo e espelhos de correção para orientar o seu treino semanal.</div>
+  </div>
+</section>
+
+<!-- ===================== O MÉTODO EM 4 PASSOS ===================== -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2 class="section-title">O Método de Estudo em 4 Passos</h2>
+    <p class="section-sub">Baseado nos pesos e critérios do Edital nº 02/2021, com carga sugerida de cerca de 24 horas por semana — avalie se cabe na sua rotina.</p>
+    <div class="grid">
+      <div class="bcard"><span class="step-num">40%</span><div class="ico">📖</div><h3>1. Leitura Ativa</h3><p>Teoria dos Volumes 1 a 5 grifando prazos, competências e conceitos doutrinários-chave que a banca cobra.</p></div>
+      <div class="bcard"><span class="step-num">20%</span><div class="ico">🛡️</div><h3>2. Blindagem com Exemplos</h3><p>Compare o 🟩 Exemplo Correto, o 🟥 Incorreto e a 🟦 Pegadinha da banca — para treinar o olho a reconhecer as armadilhas mais comuns nas alternativas erradas.</p></div>
+      <div class="bcard"><span class="step-num">30%</span><div class="ico">✍️</div><h3>3. Bateria Diária de Questões</h3><p>Cerca de 14 questões inéditas por dia, sempre dos tópicos que você acabou de estudar, alimentando seu Caderno de Erros.</p></div>
+      <div class="bcard"><span class="step-num">10%</span><div class="ico">🔁</div><h3>4. Revisão Espaçada + Discursiva</h3><p>Revisão 24h/7d/30d aos sábados e 1 redação de 30 linhas cronometrada todo domingo.</p></div>
     </div>
   </div>
-  <div class="scroll" id="scroll-area">`;
+</section>
 
-  if(p.note)h+=`<div style="background:var(--blue-l);border-radius:var(--r);padding:10px 13px;margin-bottom:14px;border:1px solid rgba(46,95,163,.2)"><div style="font-size:12px;color:var(--blue-t)">${p.note}</div></div>`;
-
-  // Reminder info inside checklist
-  if(hasRem){
-    if(dueNow&&hasPhone){
-      h+=`<div class="rem-card" style="margin-bottom:14px">
-        <div class="rem-card-head">
-          <div class="rem-card-ico">🔔</div>
-          <div class="rem-card-body">
-            <div style="font-size:12px;font-weight:600;color:var(--wa-dk)">Lembrete vencido — ${fmtDate(p.reminder.date)}</div>
-            ${p.reminder.note?`<div class="rem-card-note">${p.reminder.note}</div>`:''}
-            <div class="rem-card-phone">📲 ${p.reminder.phone}</div>
-          </div>
-        </div>
-        <button class="btn-wa-cta" style="font-size:13px;padding:12px" onclick="openWhatsApp('${p.id}')">
-          <span style="font-size:18px">📲</span> Enviar no WhatsApp — mensagem pronta
-        </button>
-      </div>`;
-    } else {
-      h+=`<div style="background:var(--amber-l);border:1px solid rgba(245,158,11,.3);border-radius:var(--r);padding:10px 13px;margin-bottom:14px;display:flex;align-items:center;gap:10px">
-        <span>⏰</span>
-        <div style="flex:1">
-          <div style="font-size:11px;font-weight:600;color:var(--amber-t)">Lembrete em ${fmtDate(p.reminder.date)}</div>
-          ${p.reminder.note?`<div style="font-size:11px;color:var(--amber-t);opacity:.8;margin-top:2px">${p.reminder.note}</div>`:''}
-          ${hasPhone?`<div style="font-size:11px;color:var(--amber-t);opacity:.7;margin-top:2px;font-family:'DM Mono',monospace">📲 ${p.reminder.phone}</div>`:''}
-        </div>
-      </div>`;
-    }
-  }
-
-  SECTIONS.forEach(sec=>{
-    h+=`<div class="sec"><div class="sec-lbl">${sec.label}</div><div class="card">`;
-    sec.items.forEach(it=>{
-      const isDone=p.checklist[it.id];
-      const bdg=it.badge?`<span class="bdg ${it.bc||'b-blue'}">${it.badge}</span>`:'';
-      h+=`<div class="item ${isDone?'done':''}" onclick="doToggle('${p.id}','${it.id}')">
-        <div class="cb"></div>
-        <div class="item-body"><div class="item-txt">${it.text}${bdg}</div>${it.sub?`<div class="item-sub">${it.sub}</div>`:''}</div>
-      </div>`;
-    });
-    h+=`</div></div>`;
-  });
-  if(pct===100)h+=`<div style="text-align:center;padding:24px 20px"><div style="font-size:32px">✅</div><div style="font-size:14px;font-weight:600;color:var(--green);margin-top:8px">Processo concluído!</div></div>`;
-  h+=`</div>`;
-  return h;
-}
-
-function buildHistory(){
-  const d=load();
-  const days=[];
-  for(let i=13;i>=0;i--){
-    const dt=new Date();dt.setDate(dt.getDate()-i);
-    const ds=dt.toISOString().slice(0,10);
-    const procs=d.processes.filter(p=>p.date===ds);
-    const cnt=procs.length;
-    const avg=cnt>0?Math.round(procs.reduce((a,p)=>a+completion(p.checklist).pct,0)/cnt):0;
-    days.push({ds,cnt,avg,dt});
-  }
-  const maxCnt=Math.max(1,...days.map(x=>x.cnt));
-  const CW=300,CH=72,BW=Math.floor(CW/14)-2;
-  let bars='';
-  days.forEach((day,i)=>{
-    const x=i*(CW/14)+(CW/14-BW)/2;
-    const bh=day.cnt>0?Math.max(8,Math.round(day.cnt/maxCnt*CH)):0;
-    const y=CH-bh;
-    const col=day.cnt===0?'#E2E8F0':day.avg>=80?'#16A34A':day.avg>=50?'#F59E0B':'#2E5FA3';
-    const isTd=day.ds===today();
-    const dimmed=V.fdate&&V.fdate!==day.ds;
-    bars+=`<rect x="${x}" y="${y}" width="${BW}" height="${Math.max(bh,1)}" rx="3" fill="${col}" opacity="${dimmed?.3:1}" style="cursor:pointer" onclick="filterHist('${day.ds}')" ${isTd?'stroke="#1B3A6B" stroke-width="1.5"':''}/>`;
-    if(i===0||i===13||isTd){const lbl=isTd?'hoje':day.dt.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});bars+=`<text x="${x+BW/2}" y="${CH+13}" text-anchor="middle" font-size="8" fill="#94A3B8" font-family="DM Sans,sans-serif">${lbl}</text>`;}
-    if(day.cnt>0)bars+=`<text x="${x+BW/2}" y="${y-3}" text-anchor="middle" font-size="8" fill="${col}" font-family="DM Mono,monospace">${day.cnt}</text>`;
-  });
-  let h=`<div class="chart-wrap">
-    <div class="chart-ttl">Processos — últimos 14 dias ${V.fdate?`· <b style="color:var(--navy)">${fmtDate(V.fdate)}</b> <span onclick="filterHist(null)" style="cursor:pointer;font-size:11px;color:var(--g400);font-weight:400">✕ limpar</span>`:''}</div>
-    <svg viewBox="0 0 ${CW} ${CH+18}" width="100%" style="overflow:visible">${bars}</svg>
-    <div class="legend">
-      <div class="leg-item"><div class="leg-dot" style="background:#16A34A"></div>≥80%</div>
-      <div class="leg-item"><div class="leg-dot" style="background:#F59E0B"></div>50–79%</div>
-      <div class="leg-item"><div class="leg-dot" style="background:#2E5FA3"></div>&lt;50%</div>
-      <div class="leg-item"><div class="leg-dot" style="background:#E2E8F0"></div>sem processos</div>
+<!-- ===================== O QUE ESTÁ INCLUSO ===================== -->
+<section class="includes">
+  <div class="wrap">
+    <h2 class="section-title">O que você vai receber</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.7)">A Coleção Preparatória em PDF — Teoria, Jurisprudência e Questões Comentadas, focada no cargo de Analista Judiciário (Apoio Judiciário e Administrativo).</p>
+    <div class="inc-list">
+      <div class="inc-item"><span class="chk">✓</span><div><b>5 Volumes Teóricos em PDF — 112 Aulas Escritas</b><span>Todas as 6 disciplinas do edital, com quadros comparativos e os 3 boxes de exemplos coloridos em cada tópico (🟩 correto, 🟥 incorreto, 🟦 pegadinha da banca).</span></div></div>
+      <div class="inc-item"><span class="chk">✓</span><div><b>Banco com 1.120 Questões Inéditas Comentadas</b><span>10 questões diferentes para cada uma das 112 aulas, no estilo UFG / Instituto Verbena: casos concretos do TJ-GO, itens I/II/III, "assinale a incorreta" e textos-base em Português. O comentário explica por que cada alternativa está certa ou errada.</span></div></div>
+      <div class="inc-item"><span class="chk">✓</span><div><b>Cronograma Tático de 12 Semanas</b><span>Semana a semana: quais tópicos ler, quais questões resolver (cerca de 95 por semana) e a meta de domingo, com roteiro para montar seus simulados.</span></div></div>
+      <div class="inc-item"><span class="chk">✓</span><div><b>Oficina Discursiva com 4 Redações Resolvidas</b><span>4 redações-modelo de 30 linhas, cada uma com espelho de correção item a item, para orientar o seu treino semanal de redação (pelo Edital nº 02/2021, a discursiva vale 50% da nota final).</span></div></div>
+      <div class="inc-item"><span class="chk">✓</span><div><b>Legislação do TJ-GO Explicada</b><span>Teoria sobre a Constituição de Goiás, o Código de Organização Judiciária (Lei 21.268/2022), o Regimento Interno e a Resolução CNJ 325/2020, com os pontos mais cobrados e a Síntese Integrada de Prazos, Quóruns e Competências.</span></div></div>
+      <div class="inc-item bonus"><span class="chk">🎁</span><div><b>BÔNUS: Guia do Método de Estudo 80/20</b><span>O guia estratégico com a Engenharia de Pontos, o ciclo semanal de 24h e o passo a passo dos 4 passos do método.</span></div></div>
     </div>
-  </div>`;
-  const all=d.processes.filter(p=>!V.fdate||p.date===V.fdate);
-  if(!all.length){h+=`<div class="empty"><div class="empty-ico">📊</div><div class="empty-txt">Nenhum processo registrado ainda.</div></div>`;}
-  else{
-    const byDate={};all.forEach(p=>{if(!byDate[p.date])byDate[p.date]=[];byDate[p.date].push(p)});
-    Object.keys(byDate).sort().reverse().forEach(ds=>{
-      const procs=byDate[ds];const lbl=ds===today()?'Hoje':fmtDateLong(ds);
-      h+=`<div class="hist-g"><div class="hist-date-lbl">${lbl}</div>`;
-      procs.forEach(p=>{
-        const{done:dn,pct}=completion(p.checklist);
-        const col=pct===100?'var(--green)':pct>50?'var(--amber)':'var(--g400)';
-        h+=`<div class="hist-card" onclick="nav('checklist',{pid:'${p.id}'})">
-          <div style="flex:1;min-width:0"><div class="hist-num">${p.number}</div>
-          <div style="font-size:11px;color:var(--g400);margin-top:2px">${dn}/${TOTAL} itens${p.note?' · '+p.note:''}</div></div>
-          <div class="hist-pct" style="color:${col}">${pct}%</div></div>`;
-      });
-      h+=`</div>`;
-    });
-  }
-  return h;
-}
-function buildAlerts(){return ALERTS_DATA.map(a=>`<div class="al-card ${a.type}"><div class="al-title">${a.title}</div><div class="al-txt">${a.text}</div></div>`).join('')}
+  </div>
+</section>
 
-/* ── MODAL ── */
-function renderModal(){
-  const ex=document.getElementById('modal-bg');if(ex)ex.remove();if(!V.modal)return;
-  let inner='';
-
-  if(V.modal==='addProcess'){
-    inner=`<div class="modal-handle"></div>
-    <div class="modal-title">Novo Processo</div>
-    <div class="form-g"><label class="form-lbl">Número do Processo</label>
-      <input type="text" class="form-in mono-in" id="pnum" placeholder="0000000-00.0000.0.00.0000" inputmode="numeric" autocomplete="off" oninput="this.value=fmtProcNum(this.value)">
-    </div>
-    <div class="form-g"><label class="form-lbl">Observação (opcional)</label>
-      <input type="text" class="form-in" id="pnote" placeholder="Ex: Réu no exterior, via Latam...">
-    </div>
-    <div class="btn-row">
-      <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
-      <button class="btn btn-primary" onclick="submitProc()">Iniciar Checklist →</button>
-    </div>`;
-  }
-
-  if(V.modal==='setReminder'){
-    const p=getProc(V.pid);
-    const hasR=p?.reminder&&!p.reminder.dismissed;
-    const tmr=new Date();tmr.setDate(tmr.getDate()+1);
-    const defDate=hasR?p.reminder.date:tmr.toISOString().slice(0,10);
-    const defNote=hasR?p.reminder.note:'';
-    const defPhone=hasR?p.reminder.phone:'';
-    const notifPerm='Notification'in window?Notification.permission:'denied';
-
-    inner=`<div class="modal-handle"></div>
-    <div class="modal-title">Definir Lembrete</div>
-    <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--g500);margin-bottom:14px">${p?.number||''}</div>
-    <div class="form-g"><label class="form-lbl">Data do Lembrete</label>
-      <input type="date" class="form-in" id="rdate" value="${defDate}" min="${today()}" onchange="updateWaPreview()">
-    </div>
-    <div class="form-g"><label class="form-lbl">Motivo / Observação</label>
-      <input type="text" class="form-in" id="rnote" placeholder="Ex: Verificar retorno do mandado..." value="${defNote}" oninput="updateWaPreview()">
-    </div>
-    <div class="form-g">
-      <label class="form-lbl">📲 Número WhatsApp para envio</label>
-      <div class="phone-row">
-        <div class="phone-prefix">+55</div>
-        <input type="tel" class="phone-in" id="rphone" placeholder="(62) 99999-9999" value="${defPhone}" inputmode="tel" autocomplete="tel" oninput="this.value=fmtPhone(this.value);updateWaPreview()">
+<!-- ===================== PARA QUEM É ===================== -->
+<section>
+  <div class="wrap">
+    <h2 class="section-title">Essa coleção é para você?</h2>
+    <p class="section-sub">Seja honesto com seu momento — o material foi desenhado para um perfil específico.</p>
+    <div class="who">
+      <div class="who-col">
+        <h3>✅ É para você que...</h3>
+        <ul>
+          <li>Vai prestar o TJ-GO para Analista Judiciário — Apoio Judiciário e Administrativo</li>
+          <li>Trabalha e tem no máximo 3–4 horas por dia para estudar</li>
+          <li>Quer um plano pronto, sem perder tempo montando cronograma</li>
+          <li>Precisa treinar a discursiva de 30 linhas no padrão UFG</li>
+          <li>Prefere estudar por material direto ao ponto, focado no edital</li>
+        </ul>
       </div>
-      <div class="form-hint">Na data do lembrete, ao abrir o app: um toque verde envia a mensagem diretamente no WhatsApp.</div>
+      <div class="who-col no">
+        <h3>❌ NÃO é para você que...</h3>
+        <ul>
+          <li>Procura fórmula mágica sem resolver questões</li>
+          <li>Quer videoaulas longas em vez de material objetivo</li>
+          <li>Não pretende seguir um cronograma semanal</li>
+          <li>Busca material genérico para “qualquer concurso”</li>
+        </ul>
+      </div>
     </div>
-    <div id="wa-preview-area"></div>
-    ${notifPerm!=='granted'?`<div style="background:var(--amber-l);border:1px solid var(--amber);border-radius:var(--rsm);padding:10px 12px;margin-top:12px;font-size:11px;color:var(--amber-t)">
-      💡 Ative as notificações do app para ver o lembrete assim que abrir o celular
-    </div>`:''}
-    <div class="btn-row">
-      ${hasR?`<button class="btn btn-danger" onclick="removeRem()">Remover</button>`:`<button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>`}
-      <button class="btn btn-primary" onclick="submitRem()">Salvar Lembrete</button>
-    </div>`;
-  }
+  </div>
+</section>
 
-  const bg=document.createElement('div');
-  bg.id='modal-bg';bg.className='modal-bg';
-  bg.innerHTML=`<div class="modal">${inner}</div>`;
-  bg.addEventListener('click',e=>{if(e.target===bg)closeModal()});
-  document.getElementById('app').appendChild(bg);
-  setTimeout(()=>{const i=bg.querySelector('input');if(i)i.focus();updateWaPreview();},100);
-}
+<!-- ===================== PREÇO / OFERTA ===================== -->
+<section class="price-sec" id="comprar">
+  <div class="wrap">
+    <h2 class="section-title">Garanta sua preparação completa</h2>
+    <p class="section-sub">Teoria, questões comentadas, cronograma e discursiva — em PDF, para estudar no seu ritmo até o dia da prova.</p>
+    <div class="price-box">
+      <span class="tag">⭐ COLEÇÃO COMPLETA</span>
+      <div class="plist">
+        <div>112 Aulas Escritas em 5 Volumes (PDF)</div>
+        <div>1.120 Questões Inéditas Comentadas</div>
+        <div>Cronograma de 12 Semanas</div>
+        <div>4 Discursivas Resolvidas + Espelhos de Correção</div>
+        <div>Legislação do TJ-GO Explicada</div>
+        <div>Bônus: Guia do Método 80/20</div>
+      </div>
+      <p class="now">Pagamento único</p>
+      <div class="big"><span>R$</span> 49<span>,99</span></div>
+      <p class="installments">Pix, cartão de crédito ou boleto</p>
+      <a href="https://pay.kiwify.com.br/7dk3EDK" class="btn-cta">COMPRAR AGORA <small>Acesso liberado pela Kiwify após a confirmação do pagamento</small></a>
+      <p class="secure">🔒 Pagamento processado pela Kiwify</p>
+    </div>
+  </div>
+</section>
 
-function updateWaPreview(){
-  const area=document.getElementById('wa-preview-area');if(!area)return;
-  const phone=document.getElementById('rphone')?.value||'';
-  const note=document.getElementById('rnote')?.value||'';
-  const date=document.getElementById('rdate')?.value||'';
-  const p=getProc(V.pid);if(!p||!phone.trim()){area.innerHTML='';return}
-  const fakeRem={date,note,phone};
-  const msg=buildWaMsg(p,fakeRem);
-  const preview=msg.replace(/\*(.*?)\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>');
-  area.innerHTML=`<div class="wa-preview">
-    <div class="wa-preview-hdr">📲 Prévia da mensagem</div>
-    <div class="wa-preview-bubble">${preview}</div>
-  </div>`;
-}
+<!-- ===================== GARANTIA ===================== -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="guarantee">
+      <div class="seal">🛡️</div>
+      <div>
+        <h3>Garantia incondicional de 7 dias</h3>
+        <p>Baixe o material, siga a primeira semana do cronograma e resolva as primeiras questões. Se não gostar por qualquer motivo, peça reembolso em até 7 dias e devolvemos 100% do valor. Sem perguntas.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-/* ── ACTIONS ── */
-function doToggle(pid,iid){
-  toggleItem(pid,iid);
-  const p=getProc(pid);if(!p)return;
-  const el=document.querySelector(`.item[onclick="doToggle('${pid}','${iid}')"]`);
-  if(el)el.classList.toggle('done',p.checklist[iid]);
-  const{done,pct}=completion(p.checklist);
-  const f=document.getElementById('cl-fill');if(f)f.style.width=pct+'%';
-  const l=document.getElementById('cl-lbl');if(l)l.textContent=`${done} de ${TOTAL} itens`;
-  const c=document.getElementById('cl-pct');if(c)c.textContent=pct+'%';
-}
-function submitProc(){
-  const num=document.getElementById('pnum')?.value?.trim();
-  const note=document.getElementById('pnote')?.value?.trim();
-  if(!num){toast('Informe o número do processo');return}
-  const id=addProcess(num,note);closeModal();nav('checklist',{pid:id});
-}
-function submitRem(){
-  const date=document.getElementById('rdate')?.value;
-  const note=document.getElementById('rnote')?.value?.trim();
-  const phone=document.getElementById('rphone')?.value?.trim();
-  if(!date){toast('Selecione uma data');return}
-  setReminder(V.pid,date,note,phone);closeModal();
-  ativarNotificacoes();toast('Lembrete salvo ✓');
-  const rb=document.querySelector('.remind-btn-hdr');if(rb)rb.textContent='🔔 Lembrete';
-}
-function removeRem(){setReminder(V.pid,null,null,null);closeModal();toast('Lembrete removido')}
-function dismissAndRefresh(pid){dismissRem(pid);render()}
-function filterHist(date){V.fdate=date;nav('history')}
-function doDelete(pid){if(confirm('Remover este processo?')){delProc(pid);render();toast('Processo removido')}}
+<!-- ===================== FAQ ===================== -->
+<section>
+  <div class="wrap" style="max-width:720px">
+    <h2 class="section-title">Perguntas frequentes</h2>
+    <details class="faq-item"><summary>Como recebo o material?</summary><div class="answer">Logo após a confirmação do pagamento, a Kiwify libera seu acesso automaticamente e envia para o seu e-mail o link da área de membros, onde ficam os 9 PDFs do curso (para ler online ou baixar). No Pix e no cartão a liberação costuma ser imediata; no boleto, acontece após a compensação.</div></details>
+    <details class="faq-item"><summary>O material está atualizado?</summary><div class="answer">Sim. Todo o conteúdo é fundamentado no Edital nº 02/2021 (UFG / Instituto Verbena), com legislação revisada em 2026 — incluindo a Lei 14.133/2021, LGPD, Res. CNJ 325/2020 e a legislação específica do TJ-GO. Se sair um novo edital, confira se o conteúdo programático e os pesos foram mantidos.</div></details>
+    <details class="faq-item"><summary>Funciona para quem trabalha o dia todo?</summary><div class="answer">O cronograma sugere cerca de 24 horas de estudo por semana (em média 3 a 4 horas por dia), com cerca de 14 questões novas por dia. Avalie se esse ritmo cabe na sua rotina; se precisar, estenda o cronograma por mais semanas.</div></details>
+    <details class="faq-item"><summary>Posso pagar no Pix, cartão ou boleto?</summary><div class="answer">Sim! O checkout da Kiwify aceita Pix, cartão de crédito e boleto. As opções de parcelamento aparecem no próprio checkout.</div></details>
+    <details class="faq-item"><summary>Por quanto tempo tenho acesso?</summary><div class="answer">O acesso é seu para sempre — você baixa o material e estuda no seu ritmo, no celular, tablet ou computador.</div></details>
+    <details class="faq-item"><summary>E se eu não me adaptar ao material?</summary><div class="answer">Você tem 7 dias de garantia incondicional. Basta pedir o reembolso dentro desse prazo e devolvemos 100% do valor pago.</div></details>
+  </div>
+</section>
 
-/* ── ★ NOTIFICAÇÕES — com clique abrindo WhatsApp ── */
-async function ativarNotificacoes(){
-  if(!('Notification'in window))return;
-  if(Notification.permission==='default'){
-    const p=await Notification.requestPermission();
-    if(p==='granted'){render();fireNotifs();}
-  }
-}
+<!-- ===================== CTA FINAL ===================== -->
+<section style="text-align:center;background:var(--navy-dark);color:#fff">
+  <div class="wrap">
+    <h2 class="section-title" style="color:#fff">Sua preparação começa na próxima segunda-feira</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.7)">Semana 01 do cronograma te espera: Volume 1, Volume 4 e as primeiras 90 questões. Enquanto os outros estudam no escuro, você segue um plano.</p>
+    <a href="https://pay.kiwify.com.br/7dk3EDK" class="btn-cta">QUERO COMEÇAR AGORA <small>Compra segura via Kiwify · Garantia de 7 dias</small></a>
+  </div>
+</section>
 
-async function fireNotifs(){
-  if(!('Notification'in window)||Notification.permission!=='granted')return;
-  if(!('serviceWorker'in navigator))return;
-  let reg;
-  try{reg=await navigator.serviceWorker.ready;}catch(e){return}
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="fbrand">Coleção Preparatória TJ-GO — Alto Desempenho</div>
+  <p>© 2026 · Todos os direitos reservados.</p>
+  <p style="margin-top:12px;font-size:11px;opacity:.6;max-width:640px;margin-left:auto;margin-right:auto">Material de estudo independente, fundamentado no Edital nº 02/2021 (UFG / Instituto Verbena). Este produto não possui vínculo com o TJ-GO, a UFG ou o Instituto Verbena. A compra é processada pela plataforma Kiwify.</p>
+</footer>
 
-  const due=dueReminders();
-  for(const proc of due){
-    const rem=proc.reminder;
-    const phone=toWaNum(rem.phone||'');
-    const url=phone?`https://wa.me/${phone}?text=${encodeURIComponent(buildWaMsg(proc,rem))}`:null;
+<!-- ===================== BOTÃO FLUTUANTE (celular) ===================== -->
+<div class="float-cta">
+  <a href="https://pay.kiwify.com.br/7dk3EDK" class="btn-cta">💼 QUERO A COLEÇÃO — R$ 49,99</a>
+</div>
 
-    // Evitar duplicatas
-    const existing=await reg.getNotifications({tag:'rem-'+proc.id});
-    if(existing.length>0)continue;
-
-    const bodyLines=[proc.number];
-    if(rem.note)bodyLines.push(rem.note);
-    bodyLines.push(phone?'👆 Toque para enviar no WhatsApp →':'👆 Toque para abrir o processo');
-
-    await reg.showNotification('🔔 Lembrete — CEPACE',{
-      body:bodyLines.join('\n'),
-      icon:'./icons/icon-192.png',
-      badge:'./icons/icon-192.png',
-      tag:'rem-'+proc.id,
-      requireInteraction:true,  // fica visível até o usuário agir
-      silent:false,
-      vibrate:[200,100,200],
-      data:{waUrl:url,procId:proc.id},
-      actions: url
-        ?[{action:'whatsapp',title:'📲 Enviar WhatsApp'},{action:'dismiss',title:'✕ Dispensar'}]
-        :[{action:'open',title:'📋 Abrir Processo'},{action:'dismiss',title:'✕ Dispensar'}]
-    });
-  }
-}
-
-function toast(msg){
-  const t=document.getElementById('toast');if(!t)return;
-  t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);
-}
-
-/* ── INIT ── */
-async function init(){
-  if('serviceWorker'in navigator){
-    await navigator.serviceWorker.register('./sw.js').catch(()=>{});
-  }
-  render();
-  // Pequeno delay para garantir que o SW está pronto
-  setTimeout(fireNotifs, 800);
-  // Verificar a cada minuto enquanto o app está aberto
-  setInterval(()=>{
-    fireNotifs();
-    const due=dueReminders();
-    const dot=document.querySelector('.rdot');
-    if(due.length>0&&!dot)render();
-  },60000);
-}
-
-init();
-</script>
 </body>
 </html>
